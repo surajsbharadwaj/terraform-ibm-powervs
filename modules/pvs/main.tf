@@ -43,13 +43,13 @@ resource "ibm_pi_key" "ssh_key" {
 # Copyright 2022 IBM
 #####################################################
 
-data "ibm_pi_catalog_images" "get_catalog_images" {
+data "ibm_pi_catalog_images" "catalog_images_ds" {
   sap                  = true
   pi_cloud_instance_id = ibm_resource_instance.pvs_service.guid
 }
 
 locals {
-  catalog_images_to_import = flatten([for stock_image in data.ibm_pi_catalog_images.get_catalog_images.images : [for image_name in var.pvs_image_names : stock_image if stock_image.name == image_name]])
+  catalog_images_to_import = flatten([for stock_image in data.ibm_pi_catalog_images.catalog_images_ds.images : [for image_name in var.pvs_image_names : stock_image if stock_image.name == image_name]])
 }
 
 resource "ibm_pi_image" "import_images" {

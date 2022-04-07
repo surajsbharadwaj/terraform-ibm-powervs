@@ -1,6 +1,6 @@
 #####################################################
-# VPC Configuration
-# Copyright 2020 IBM
+# PVS Configuration
+# Copyright 2022 IBM
 #####################################################
 
 provider "ibm" {
@@ -10,7 +10,7 @@ provider "ibm" {
 
 module "pvs" {
   // source = "terraform-ibm-modules/powervs/ibm//modules/pvs"
-  source = "../../modules/powervs_service"
+  source = "../../modules/pvs"
   
   pvs_zone                  = var.pvs_zone
   pvs_resource_group_name   = var.pvs_resource_group_name
