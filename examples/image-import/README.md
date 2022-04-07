@@ -6,25 +6,6 @@ This example illustrates how to use the `image-import` module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-## Example Usage
-```
-provider "ibm" {
-  region    =   "sao"
-  zone      =   "sao01"
-}
-
-module "import_image" {
-  source = "terraform-ibm-modules/powervs/ibm//modules/image-import"
-
-  pvs_zone                  = var.pvs_zone
-  pvs_resource_group_name   = var.pvs_resource_group_name
-  pvs_service_name          = var.pvs_service_name
-  pvs_image_name            = var.pvs_image_name
-}
-```
-
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
 ## Inputs
 
 | Name                              | Description                                           | Type   | Default | Required |
@@ -36,7 +17,7 @@ module "import_image" {
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
-NOTE: We can configure the all details in input.tfvars.
+NOTE: We can configure all details in input.tfvars 
 
 ## Usage
 
