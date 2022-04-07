@@ -1,6 +1,7 @@
 # PowerVS image-import Module Example
 
-This module is used to import an image from catalogue images into cloud account if the image doest exist in cloud account
+This module is used to import an image from catalogue images into cloud account if the image doest exist in cloud account.
+
 This example illustrates how to use the `image-import` module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
