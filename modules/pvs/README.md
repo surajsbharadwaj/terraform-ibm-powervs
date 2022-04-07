@@ -1,4 +1,4 @@
-# Module powervs_service
+# Module pvs
 
 This module is used to create a PowerVS service, SSH Key, import images, Pulic network and 3 Private Subnets
 
@@ -33,12 +33,12 @@ module "pvs" {
 | Name                              | Description                                           | Type   | Default | Required |
 |-----------------------------------|-------------------------------------------------------|--------|---------|----------|
 | pvs\_zone | IBM Cloud zone | string | n/a | yes |
-| pvs\_resource\_group\_name | Exisiting Resource Group Name | string | n/a | yes |
+| pvs\_resource\_group\_name | Existing Resource Group Name | string | n/a | yes |
 | pvs\_service\_name | Name of PowerVS service which will be created | string | n/a | yes |
 | pvs\_tags | List of Tag names for PowerVS service | list(string) | n/a | no |
 | pvs\_sshkey\_name | Name of PowerVS SSH Key which will be created  | string | n/a | yes |
 | pvs\_public\_key | PowerVS SSH Public key data | string | n/a | yes |
-| pvs\_image\_names | List of Images to be imported into cloud account from catalog images | list(string) | ["Linux-SUSE-SAP-12-4","Linux-RHEL-SAP-8-1"] | yes |
+| pvs\_image\_names | List of Images to be imported into cloud account from catalogue images | list(string) | ["Linux-SUSE-SAP-12-4","Linux-RHEL-SAP-8-1"] | yes |
 | pvs\_public\_network\_name | Name of PowerVS Public Network which will be created  | string | public_net | yes |
 | pvs\_management\_network | PowerVS Management Subnet name and cidr which will be created. | map | n/a | yes |
 | pvs\_sap\_network | PowerVS SAP Subnet name and cidr which will be created. | map | n/a | yes |
