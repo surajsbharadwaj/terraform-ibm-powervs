@@ -1,7 +1,33 @@
-# Module powervs_service
+# PowerVS Service Module Example
 
-This example illustrates how to use the powervs_service module.
+This example illustrates how to use the `pvs` module.
+It creates PVS service, ssh key, 3 private networks, 1 public network and imports stock sap catalogue images.
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Example Usage
+```
+provider "ibm" {
+  region    =   "sao"
+  zone      =   "sao01"
+}
+
+module "pvs" {
+  source = "terraform-ibm-modules/powervs/ibm//modules/pvs"
+
+  pvs_zone                  = var.pvs_zone
+  pvs_resource_group_name   = var.pvs_resource_group_name
+  pvs_service_name          = var.pvs_service_name
+  pvs_tags                  = var.pvs_tags
+  pvs_sshkey_name           = var.pvs_sshkey_name
+  pvs_public_key            = var.pvs_public_key
+  pvs_image_names           = var.pvs_image_names
+  pvs_public_network_name   = var.pvs_public_network_name
+  pvs_management_network    = var.pvs_management_network
+  pvs_sap_network           = var.pvs_sap_network
+  pvs_backup_network        = var.pvs_backup_network
+}
+```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -11,7 +37,7 @@ This example illustrates how to use the powervs_service module.
 |-----------------------------------|-------------------------------------------------------|--------|---------|----------|
 | pvs\_region | IBM Cloud Region | string | n/a | yes |
 | pvs\_zone | IBM Cloud Zone | string | n/a | yes |
-| pvs\_resource\_group\_name | Exisiting Resource Group Name | string | n/a | yes |
+| pvs\_resource\_group\_name | Existing Resource Group Name | string | n/a | yes |
 | pvs\_service\_name | Name of PowerVS service which will be created | string | n/a | yes |
 | pvs\_tags | List of Tag names for PowerVS service | list(string) | n/a | no |
 | pvs\_sshkey\_name | Name of PowerVS SSH Key which will be created  | string | n/a | yes |
