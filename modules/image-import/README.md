@@ -1,6 +1,6 @@
-# Module powervs_service
+# Module image-import
 
-This module is used to import an image from catalog images into cloud account if the image doesnt exist in cloud account
+This module is used to import an image from catalogue images into cloud account if the image doesn't exist in cloud account
 
 ## Example Usage
 ```
@@ -26,8 +26,8 @@ module "import_image" {
 | Name                              | Description                                           | Type   | Default | Required |
 |-----------------------------------|-------------------------------------------------------|--------|---------|----------|
 | pvs\_zone | IBM Cloud zone | string | n/a | yes |
-| pvs\_resource\_group\_name | Exisiting Resource Group Name | string | n/a | yes |
-| pvs\_service\_name | Exisiting PowerVS Service Name | string | n/a | yes |
+| pvs\_resource\_group\_name | Existing Resource Group Name | string | n/a | yes |
+| pvs\_service\_name | Existing PowerVS Service Name | string | n/a | yes |
 | pvs\_image_name | Name of Image to import | string | n/a | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
