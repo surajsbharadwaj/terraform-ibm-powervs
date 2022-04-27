@@ -1,6 +1,6 @@
 # Module pvs
 
-This module is used to create a PowerVS service, SSH Key, import images, Pulic network and 3 Private Subnets
+This module is used to create a PowerVS service, SSH Key, import images, Public network and 3 Private Subnets
 
 ## Example Usage
 ```
