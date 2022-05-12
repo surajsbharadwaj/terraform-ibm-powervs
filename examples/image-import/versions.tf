@@ -1,5 +1,5 @@
 #####################################################
-# powervs service Module
+# powervs image import Module usage
 # Copyright 2022 IBM
 #####################################################
 
@@ -14,7 +14,7 @@ terraform {
     }
   }
 }
-If we dont configure the version parameter, it fetches the latest provider version.
+If we don't configure the version parameter, it fetches the latest provider version.
 ****************************************************/
 
 terraform {

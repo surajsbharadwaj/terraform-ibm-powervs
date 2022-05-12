@@ -1,5 +1,5 @@
 #####################################################
-# PowerVs Resource Configuration
+# PowerVs Image import Configuration
 # Copyright 2022 IBM
 #####################################################
 

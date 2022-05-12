@@ -4,12 +4,12 @@ variable "pvs_zone" {
 }
 
 variable "pvs_resource_group_name" {
-  description = "Exisiting Resource Group Name"
+  description = "Existing Resource Group Name"
   type        = string
 }
 
 variable "pvs_service_name" {
-  description = "Exisiting PowerVS Service Name"
+  description = "Existing PowerVS Service Name"
   type        = string
 }
 

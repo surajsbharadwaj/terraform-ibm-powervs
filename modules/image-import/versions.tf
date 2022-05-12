@@ -1,5 +1,5 @@
 #####################################################
-# powervs service Module
+# powervs image import Module
 # Copyright 2022 IBM
 #####################################################
 

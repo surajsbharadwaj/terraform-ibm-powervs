@@ -5,8 +5,9 @@ This module is used to import an image from catalogue images into cloud account 
 ## Example Usage
 ```
 provider "ibm" {
-  region    =   "sao"
-  zone      =   "sao01"
+  region           = "sao"
+  zone             = "sao01"
+  ibmcloud_api_key = "your api key" != null ? "your api key" : null
 }
 
 module "import_image" {

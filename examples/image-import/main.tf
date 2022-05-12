@@ -4,8 +4,9 @@
 #####################################################
 
 provider "ibm" {
-  region    =   "sao"
-  zone      =   "sao01"
+  region    =   var.pvs_region
+  zone      =   var.pvs_zone
+  ibmcloud_api_key = var.ibmcloud_api_key != null ? var.ibmcloud_api_key : null
 }
 
 module "import_image" {

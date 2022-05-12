@@ -4,7 +4,7 @@ variable "pvs_zone" {
 }
 
 variable "pvs_resource_group_name" {
-  description = "Exisiting Resource Group Name"
+  description = "Existing Resource Group Name"
   type        = string
 }
 

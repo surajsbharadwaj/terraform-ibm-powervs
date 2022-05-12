@@ -1,3 +1,9 @@
+variable "ibmcloud_api_key" {
+  description = "IBM Cloud Api Key"
+  type        = string
+  default     = null
+}
+
 variable "pvs_region" {
   description = "IBM Cloud Region"
   type        = string
@@ -9,7 +15,7 @@ variable "pvs_zone" {
 }
 
 variable "pvs_resource_group_name" {
-  description = "Exisiting Resource Group Name"
+  description = "Existing Resource Group Name"
   type        = string
 }
 

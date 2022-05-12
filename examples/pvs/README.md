@@ -10,6 +10,7 @@ This example illustrates how to use the `pvs` module.
 
 | Name                              | Description                                           | Type   | Default | Required |
 |-----------------------------------|-------------------------------------------------------|--------|---------|----------|
+| pvs\_ibmcloud_api_key | IBM cloud API key | string | null | optional |
 | pvs\_region | IBM Cloud Region | string | n/a | yes |
 | pvs\_zone | IBM Cloud Zone | string | n/a | yes |
 | pvs\_resource\_group\_name | Existing Resource Group Name | string | n/a | yes |

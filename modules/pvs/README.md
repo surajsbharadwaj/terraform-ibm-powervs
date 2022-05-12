@@ -5,8 +5,9 @@ This module is used to create a PowerVS service, SSH Key, import images, Public 
 ## Example Usage
 ```
 provider "ibm" {
-  region    =   "sao"
-  zone      =   "sao01"
+  region           = "sao"
+  zone             = "sao01"
+  ibmcloud_api_key = "your api key" != null ? "your api key" : null
 }
 
 module "pvs" {
