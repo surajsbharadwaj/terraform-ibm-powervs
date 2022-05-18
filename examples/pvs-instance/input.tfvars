@@ -20,7 +20,7 @@ pvs_instance_storage_config    = {
                                    names  = "data,log,shared,usrsap"
                                    disks_size = "160,150,300,50"
                                    counts = "8,8,1,1"
-								   tiers  = "tier1,tier1,tier3,tier3"
+                                   tiers  = "tier1,tier1,tier3,tier3"
                                    paths  = "/hana/data,/hana/log,/hana/shared,/usr/sap"
                                   }
 pvs_instance_private_net_names = [ "mgmt_net","sap_net","bkp_net"]
@@ -46,7 +46,7 @@ pvs_instance_storage_config    = {
                                    names  = "data,log,shared,usrsap"
                                    disks_size = "160,150,300,50"
                                    counts = "8,8,1,1"
-								   tiers  = "tier1,tier1,tier3,tier3"
+                                   tiers  = "tier1,tier1,tier3,tier3"
                                    paths  = "/hana/data,/hana/log,/hana/shared,/usr/sap"
                                   }
 pvs_instance_private_net_names = [ "mgmt_net","sap_net","bkp_net"]
