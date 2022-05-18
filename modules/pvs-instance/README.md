@@ -10,8 +10,18 @@ provider "ibm" {
   ibmcloud_api_key = "your api key" != null ? "your api key" : null
 }
 
+module "import-image" {
+  source = "terraform-ibm-modules/powervs/ibm//modules/image-import"
+  
+  pvs_zone                       = var.pvs_zone
+  pvs_resource_group_name        = var.pvs_resource_group_name
+  pvs_service_name               = var.pvs_service_name
+  pvs_image_name                 = var.pvs_instance_image_name
+}
+
 module "instance-sap" {
   source = "terraform-ibm-modules/powervs/ibm//modules/pvs-instance"
+  depends_on                     = [module.import-image]
   
   pvs_zone                       = var.pvs_zone
   pvs_resource_group_name        = var.pvs_resource_group_name

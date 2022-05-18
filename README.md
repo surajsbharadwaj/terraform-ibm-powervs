@@ -4,6 +4,8 @@ This is a collection of modules that make it easier to provision PowerVS Resourc
 
 * pvs
 * image-import
+* cloud-connection
+* pvs-instance
 
 ## Compatibility
 
