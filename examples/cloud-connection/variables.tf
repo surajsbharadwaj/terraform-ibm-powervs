@@ -18,6 +18,11 @@ variable "pvs_service_name" {
   type        = string
 }
 
+variable "cloud_connection_reuse" {
+  description = "Use existing Cloud connection to attach PVS subnets"
+  type        = string
+}
+
 variable "cloud_connection_name" {
   description = "Name of the Cloud connection which will be created"
   type        = string
@@ -37,6 +42,7 @@ variable "pvs_subnet_names" {
   description = "List of PowerVs subnet names to be attached to Cloud connection"
   type        = list
 }
+
 variable "cloud_connection_vpc_enable" {
   description = "Enable VPC for this cloud connection"
   type        = bool
@@ -48,9 +54,9 @@ variable "vpc_region" {
   default     = null
 }
 
-variable "vpc_name" {
-  description = "Existing VPC Name which has to be attached to Cloud connection. Required if cloud_connection_vpc_enable is true"
-  type        = string
+variable "vpc_names" {
+  description = "Existing VPC Names which has to be attached to Cloud connection. Required if cloud_connection_vpc_enable is true"
+  type        = list
   default     = null
 }
 

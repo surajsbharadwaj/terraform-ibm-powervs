@@ -66,12 +66,12 @@ variable "pvs_instance_private_net_names" {
 
 variable "pvs_instance_storage_config" {
   description = "DISKS To be created and attached to node.Comma separated values"
-    default     = {
+  type        = map
+  default     = {
                     names      = ""
                     paths      = ""
                     disks_size = ""
-					counts     = ""
+					          counts     = ""
                     tiers      = ""
-    }
-  type        = map
+  }
 }

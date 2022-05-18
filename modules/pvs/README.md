@@ -36,7 +36,7 @@ module "pvs" {
 | pvs\_zone | IBM Cloud zone | string | n/a | yes |
 | pvs\_resource\_group\_name | Existing Resource Group Name | string | n/a | yes |
 | pvs\_service\_name | Name of PowerVS service which will be created | string | n/a | yes |
-| pvs\_tags | List of Tag names for PowerVS service | list(string) | n/a | no |
+| pvs\_tags | List of Tag names for PowerVS service | list(string) | null | no |
 | pvs\_sshkey\_name | Name of PowerVS SSH Key which will be created  | string | n/a | yes |
 | pvs\_public\_key | PowerVS SSH Public key data | string | n/a | yes |
 | pvs\_image\_names | List of Images to be imported into cloud account from catalogue images | list(string) | ["Linux-SUSE-SAP-12-4","Linux-RHEL-SAP-8-1"] | yes |

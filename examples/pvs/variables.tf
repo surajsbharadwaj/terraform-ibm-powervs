@@ -1,9 +1,3 @@
-variable "ibmcloud_api_key" {
-  description = "IBM Cloud Api Key"
-  type        = string
-  default     = null
-}
-
 variable "pvs_region" {
   description = "IBM Cloud Region"
   type        = string
@@ -68,5 +62,11 @@ variable "pvs_backup_network" {
 variable "pvs_tags" {
   description = "List of Tag names for PowerVS service"
   type        = list(string)
+  default     = null
+}
+
+variable "ibmcloud_api_key" {
+  description = "IBM Cloud Api Key"
+  type        = string
   default     = null
 }

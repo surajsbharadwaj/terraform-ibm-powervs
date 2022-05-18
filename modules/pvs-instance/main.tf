@@ -1,3 +1,8 @@
+#####################################################
+# PowerVs Instance Create Configuration
+# Copyright 2022 IBM
+#####################################################
+
 locals {
   service_type          = "power-iaas"
   storage_type          = "tier1"
@@ -14,6 +19,11 @@ data "ibm_resource_instance" "pvs_service_ds" {
   resource_group_id    = data.ibm_resource_group.resource_group_ds.id
 }
 
+#####################################################
+# Get SSH Key ID, Boot Image ID and Private Subnets Ids
+# Copyright 2022 IBM
+#####################################################
+
 data "ibm_pi_key" "key_ds" {
   pi_cloud_instance_id = data.ibm_resource_instance.pvs_service_ds.guid
   pi_key_name          = var.pvs_sshkey_name
@@ -29,6 +39,11 @@ data "ibm_pi_network" "pvs_subnets_ds" {
   pi_cloud_instance_id = data.ibm_resource_instance.pvs_service_ds.guid
   pi_network_name      = var.pvs_instance_private_net_names[count.index]
 }
+
+#####################################################
+# Create PowerVs Instance
+# Copyright 2022 IBM
+#####################################################
 
 resource "ibm_pi_instance" "create_instance" {
   pi_cloud_instance_id     = data.ibm_resource_instance.pvs_service_ds.guid
@@ -53,6 +68,11 @@ resource "ibm_pi_instance" "create_instance" {
 
 }
 
+#####################################################
+# Create Disks mapping variables
+# Copyright 2022 IBM
+#####################################################
+
 locals{
   disks_counts    = length(var.pvs_instance_storage_config["counts"]) > 0 ? [for x in (split(",", var.pvs_instance_storage_config["counts"])) : tonumber(trimspace(x))] : null
   disks_size_tmp  = length(var.pvs_instance_storage_config["counts"]) > 0 ? [for disk_size in split(",", var.pvs_instance_storage_config["disks_size"]) : tonumber(trimspace(disk_size))] : null
@@ -67,6 +87,11 @@ locals{
   disks_number    = length(var.pvs_instance_storage_config["counts"]) > 0 ? sum([for x in (split(",", var.pvs_instance_storage_config["counts"])) : tonumber(trimspace(x))]) : 0
 }
 
+#####################################################
+# Create Volumes
+# Copyright 2022 IBM
+#####################################################
+
 resource "ibm_pi_volume" "create_volume"{
   depends_on           = [ibm_pi_instance.create_instance]
   count                = local.disks_number
@@ -76,6 +101,11 @@ resource "ibm_pi_volume" "create_volume"{
   pi_volume_shareable  = false
   pi_cloud_instance_id = data.ibm_resource_instance.pvs_service_ds.guid
 }
+
+#####################################################
+# Attach Volumes to the Instance
+# Copyright 2022 IBM
+#####################################################
 
 resource "ibm_pi_volume_attach" "instance_volumes_attach"{
     depends_on           = [ibm_pi_volume.create_volume,ibm_pi_instance.create_instance] 

@@ -24,8 +24,8 @@ module "instance-sap" {
   pvs_instance_proc_type         = var.pvs_instance_proc_type
   pvs_instance_processors        = var.pvs_instance_processors
   pvs_instance_memory            = var.pvs_instance_memory
-  pvs_instance_storage_config    = var.pvs_instance_storage_config
   pvs_instance_private_net_names = var.pvs_instance_private_net_names
+  pvs_instance_storage_config    = var.pvs_instance_storage_config
 }
 ```
 
@@ -48,5 +48,15 @@ module "instance-sap" {
 | pvs\_instance\_memory | Amount of memory | string | null | optional |
 | pvs\_instance\_private\_net\_names | Existing list of subnets name to be attached to node. First network has to be a management network  | list | n/a | yes |
 | pvs\_instance\_storage\_config | DISKS To be created and attached to node.Comma separated values | map | n/a | yes |
+
+
+## Outputs
+
+| Name                              | Description                                           | Type   |
+|-----------------------------------|-------------------------------------------------------|--------|
+| instance\_private\_ips | Instance Private IPs | string |
+| instance\_mgmt\_ip | Instance Management IP | string |
+| instance\_wwns | Volumes WWNs of the instance | list |
+
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

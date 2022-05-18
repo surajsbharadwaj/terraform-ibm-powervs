@@ -1,9 +1,3 @@
-variable "ibmcloud_api_key" {
-  description = "IBM Cloud Api Key"
-  type        = string
-  default     = null
-}
-
 variable "pvs_region" {
   description = "IBM Cloud Region"
   type        = string
@@ -82,8 +76,17 @@ variable "pvs_instance_storage_config" {
                     names      = ""
                     paths      = ""
                     disks_size = ""
-					counts     = ""
+                    counts     = ""
                     tiers      = ""
-    }
-  
+  }
+}
+
+#####################################################
+# Optional Parameters
+#####################################################
+
+variable "ibmcloud_api_key" {
+  description = "IBM Cloud Api Key"
+  type        = string
+  default     = null
 }

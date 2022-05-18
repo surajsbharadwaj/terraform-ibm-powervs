@@ -1,6 +1,6 @@
 # PowerVS Instance Module Example
 
-It creates an instance on PowerVS, Creates volumes, attaches volumes and attaches private network
+It creates an instance on PowerVS, Creates volumes, attaches volumes and attaches private networks
 
 This example illustrates how to use the `pvs-instance` module.
 
