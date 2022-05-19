@@ -29,10 +29,12 @@ resource "null_resource" "configure_vpc_route" {
     inline = [
     
     ###### Add route for Pinging between VPC VSI and PVS VSI always ######
+
     "if [ -n '${var.vpc_address_prefix}' ]; then echo \"${var.vpc_address_prefix} $( ip route list | awk ' /^default/ {print $3}') - -\" > /etc/sysconfig/network/ifroute-eth0; fi",
-	 
-	  ##### SET eth0 MTU to 1450 for routing traffic to internet (eth0 has to be a management network)
-	  "grep -qxF \"MTU='1450'\" /etc/sysconfig/network/ifcfg-eth0 || sed -i '/^MTU=/cMTU=1450' /etc/sysconfig/network/ifcfg-eth0",
+
+    ##### SET eth0 MTU to 1450 for routing traffic to internet (eth0 has to be a management network)
+
+    "grep -qxF \"MTU='1450'\" /etc/sysconfig/network/ifcfg-eth0 || sed -i '/^MTU=/cMTU=1450' /etc/sysconfig/network/ifcfg-eth0",
     "grep -qxF \"ETHTOOL_OPTIONS='-K iface rx off '\" /etc/sysconfig/network/ifcfg-eth0 || echo \"ETHTOOL_OPTIONS='-K eth0 rx off'\" >> /etc/sysconfig/network/ifcfg-eth0",
     "/usr/bin/systemctl restart network ", 
 
@@ -163,7 +165,7 @@ resource "null_resource" "install_packages" {
   provisioner "remote-exec" {
     inline = [
     
-    ##### Ansible Install #####
+    ##### Install Ansible #####
 	
     "zypper install -y python-pip",
     "pip install ansible ",
@@ -175,7 +177,7 @@ resource "null_resource" "install_packages" {
 
 #####################################################
 # Execute ANsbile galaxy role to prepare the system 
-  for SAP installation
+# for SAP installation
 # Copyright 2022 IBM
 #####################################################
 
