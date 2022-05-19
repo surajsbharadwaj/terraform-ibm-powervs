@@ -3,7 +3,7 @@
 This module configures the PVS instance and prepares the system for SAP installation. 
 - Add routes to VPC
 - Configure SNAT
-- COnfigure Forward Proxy
+- Configure Forward Proxy
 - SUSE Registeration
 - Install Packages
 - Run ansible galaxy roles 
