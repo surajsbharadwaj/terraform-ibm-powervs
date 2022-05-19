@@ -1,6 +1,6 @@
 # Module pvs-instance
 
-This module is used to creates an instance on PowerVS, Creates volumes, attaches volumes and attaches private network
+This module creates an instance on PowerVS, Creates volumes, attaches volumes and attaches private network
 
 ## Example Usage
 ```
