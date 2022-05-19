@@ -28,7 +28,6 @@ pvs_instance_storage_config  = {
                                   wwns       = "6005076810810261F8000000000045FF,6005076810810261F8000000000045FD,6005076810810261F8000000000045FE,6005076810810261F8000000000045FB,6005076810810261F8000000000045FC,"                                    
                                }
 sap_solution                 = "HANA"
-pvs_sshkey_name              = "publish"
 ssh_private_key             = <<-EOF
 -----BEGIN OPENSSH PRIVATE KEY-----
 bEFQVE9QLVFOsadasfvxvsadsadsdsd
@@ -63,8 +62,6 @@ pvs_instance_storage_config  = {
                                   counts     = "2,2,1,1"
                                   wwns       = "6005076810810261F8000000000045FF,6005076810810261F8000000000045FD,6005076810810261F8000000000045FE,6005076810810261F8000000000045FB,6005076810810261F8000000000045FC,"                                    
                                }
-
-pvs_sshkey_name              = "publish"
 ssh_private_key             = <<-EOF
 -----BEGIN OPENSSH PRIVATE KEY-----
 bEFQVE9QLVFOsadasfvxvsadsadsdsd
