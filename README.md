@@ -6,6 +6,7 @@ This is a collection of modules that make it easier to provision PowerVS Resourc
 * image-import
 * cloud-connection
 * pvs-instance
+* pvs-instance-sap-init-sles
 
 ## Compatibility
 
