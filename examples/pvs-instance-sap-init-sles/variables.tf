@@ -1,8 +1,3 @@
-variable "internet_config" {
-    type        = string
-    description = "Internet configuration using SNAT OR SQUID. Value is either SNAT or SQUID"
-}
-
 variable "bastion_public_ip" {
     description = "Public IP of Bastion Host"
 }

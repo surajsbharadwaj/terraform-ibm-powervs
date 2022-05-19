@@ -10,7 +10,6 @@ Example 1 usage using SNAT:
 
 vpc_address_prefix           = "172.16.0.0/23"
 bastion_public_ip            = "163.109.95.206"
-bastion_private_ip           = "10.97.0.45"
 host_private_ip              = "10.97.0.59"  ##instance managment private IP
 suse_activation              = {
                                   required         = true
@@ -45,7 +44,6 @@ Example 2 usage using SQUID:
 
 vpc_address_prefix           = "172.16.0.0/23"
 bastion_public_ip            = "163.109.95.206"
-bastion_private_ip           = "172.16.0.4"
 host_private_ip              = "10.97.0.59"  ##instance managment private IP
 sap_solution                 = "HANA"
 suse_activation              = {
