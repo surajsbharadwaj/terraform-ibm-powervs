@@ -43,7 +43,7 @@ resource "null_resource" "configure_vpc_route" {
 }
 
 #####################################################
-# SNAT configutaion
+# SNAT configuration
 # Copyright 2022 IBM
 #####################################################
 
@@ -76,7 +76,7 @@ resource "null_resource" "configure_snat" {
 }
 
 #####################################################
-# Forward Proxy squid configutaion
+# Forward Proxy squid configuration
 # Copyright 2022 IBM
 #####################################################
 
