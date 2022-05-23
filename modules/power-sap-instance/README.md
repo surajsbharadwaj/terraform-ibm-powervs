@@ -1,4 +1,4 @@
-# Module pvs-sap-instance
+# Module powervs-sap-instance
 
 This module creates an instance on PowerVS, Creates volumes, attaches volumes and attaches private network
 
