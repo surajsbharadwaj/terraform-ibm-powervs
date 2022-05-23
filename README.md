@@ -2,11 +2,9 @@
 
 This is a collection of modules that make it easier to provision PowerVS Resources on IBM Cloud Platform:
 
-* pvs
-* image-import
-* cloud-connection
-* pvs-instance
-* pvs-instance-sap-init-sles
+* powervs-sap-infrastructure
+* powervs-sap-instance
+
 
 ## Compatibility
 
