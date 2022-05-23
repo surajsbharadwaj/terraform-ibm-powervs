@@ -1,5 +1,6 @@
 variable "brownfield" {
   description = "Existing Cloud PowerVS Service project"
+  type        = bool
 }
 
 variable "pvs_zone" {

@@ -14,7 +14,9 @@ variable "pvs_resource_group_name" {
 }
 
 variable "brownfield" {
-  description = "Existing Cloud PowerVS Service project"
+  description = "Existing Cloud PowerVS Service project. Set to true"
+  type        = bool
+  default     = true
 }
 
 variable "pvs_service_name" {
