@@ -75,9 +75,3 @@ variable "ibmcloud_api_key" {
   type        = string
   default     = null
 }
-
-variable "ibmcloud_api_key" {
-  description = "IBM cloud Api Key"
-  type        = string
-  default     = null
-}
