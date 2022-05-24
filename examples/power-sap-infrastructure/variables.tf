@@ -68,7 +68,7 @@ variable "cloud_connection_name" {
 variable "cloud_connection_count" {
   description = "Required number of Cloud connections"
   type        = string
-  default     = null
+  default     = 2
 }
 
 variable "cloud_connection_speed" {
