@@ -57,7 +57,7 @@ variable "pvs_backup_network" {
 
 variable "cloud_connection_reuse" {
   description = "Use existing Cloud connection to attach PVS subnets"
-  type        = string
+  type        = bool
 }
 
 variable "cloud_connection_name" {
@@ -68,6 +68,7 @@ variable "cloud_connection_name" {
 variable "cloud_connection_count" {
   description = "Required number of Cloud connections"
   type        = string
+  default     = null
 }
 
 variable "cloud_connection_speed" {
