@@ -1,6 +1,6 @@
 # Module power-sap-service
 
-This module is used to create a PowerVS service, SSH Key, import images, Public network and 3 Private Subnets
+This module is used to create a PowerVS service, SSH Key, import images, Public network and 2 private networks for management network and backup network
 
 ## Example Usage
 ```

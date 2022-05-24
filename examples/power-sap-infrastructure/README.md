@@ -4,7 +4,7 @@ This example creates:
 
 - PVS service
 - ssh key
-- 3 private networks
+- 2 private networks for management network and backup network
 - 1 public network
 - imports stock sap catalogue images.
 - Creates one or 2 cloud connections and attaches VPC and PowerVS subnets
