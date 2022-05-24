@@ -30,7 +30,7 @@ resource "null_resource" "configure_vpc_route" {
     
     ###### Add route for Pinging between VPC VSI and PVS VSI always ######
 
-    "if [ -n '${var.vpc_address_prefix}' ]; then echo \"${var.vpc_address_prefix} $( ip route list | awk ' /^default/ {print $3}') - -\" > /etc/sysconfig/network/ifroute-eth0; fi",
+    "if [ -n '${var.vpc_address_prefix}' ]; then echo \"${var.vpc_address_prefix} $( ip route list | awk ' /^default/ {print $3}') - -\" >> /etc/sysconfig/network/ifroute-eth0; fi",
 
     ##### SET eth0 MTU to 1450 for routing traffic to internet (eth0 has to be a management network)
 
@@ -66,7 +66,7 @@ resource "null_resource" "configure_snat" {
     
     #### SNAT CLIENT CONFIG (eth0 has to be a management network) ####
 
-    "if [ -n '${var.pvs_bastion_snat_config["pvs_bastion_private_ip"]}' ]; then echo \"${var.pvs_bastion_snat_config["pvs_bastion_private_ip"]} $( ip route list | awk ' /^default/ {print $3}') - -\" > /etc/sysconfig/network/ifroute-eth0; fi",
+    "if [ -n '${var.pvs_bastion_snat_config["pvs_bastion_private_ip"]}' ]; then echo \"${var.pvs_bastion_snat_config["pvs_bastion_private_ip"]} $( ip route list | awk ' /^default/ {print $3}') - -\" >> /etc/sysconfig/network/ifroute-eth0; fi",
     "grep -qxF \"NETCONFIG_DNS_STATIC_SERVERS=\"9.9.9.9\"\" /etc/sysconfig/network/config || sed -i '/^NETCONFIG_DNS_STATIC_SERVERS=/cNETCONFIG_DNS_STATIC_SERVERS=\"9.9.9.9\"' /etc/sysconfig/network/config",
     "rm -rf /etc/resolv.conf",    
     "/usr/bin/systemctl restart network ", 
