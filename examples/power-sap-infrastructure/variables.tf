@@ -80,7 +80,7 @@ variable "cloud_connection_speed" {
 variable "cloud_connection_vpc_enable" {
   description = "Enable VPC for this cloud connection"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "vpc_region" {
