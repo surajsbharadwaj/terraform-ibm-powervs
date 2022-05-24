@@ -22,7 +22,6 @@ module "pvs" {
   pvs_image_names           = var.pvs_image_names
   pvs_public_network_name   = var.pvs_public_network_name
   pvs_management_network    = var.pvs_management_network
-  pvs_sap_network           = var.pvs_sap_network
   pvs_backup_network        = var.pvs_backup_network
 }
 ```
@@ -42,7 +41,6 @@ module "pvs" {
 | pvs\_image\_names | List of Images to be imported into cloud account from catalogue images | list(string) | ["Linux-SUSE-SAP-12-4","Linux-RHEL-SAP-8-1"] | yes |
 | pvs\_public\_network\_name | Name of PowerVS Public Network which will be created  | string | public_net | yes |
 | pvs\_management\_network | PowerVS Management Subnet name and cidr which will be created. | map | n/a | yes |
-| pvs\_sap\_network | PowerVS SAP Subnet name and cidr which will be created. | map | n/a | yes |
 | pvs\_backup\_network | PowerVS Backup Network name and cidr which will be created. | map | n/a | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

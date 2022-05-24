@@ -3,7 +3,7 @@
 It creates:
 - PVS service
 - ssh key
-- 3 private networks
+- 2 private networks for management network and backup network
 - 1 public network
 - imports stock sap catalogue images.
 - Creates one or 2 cloud connections and attaches VPC and PowerVS subnets
@@ -29,13 +29,12 @@ module "power-sap-infrastructure" {
   pvs_image_names             = var.pvs_image_names
   pvs_public_network_name     = var.pvs_public_network_name
   pvs_management_network      = var.pvs_management_network
-  pvs_sap_network             = var.pvs_sap_network
   pvs_backup_network          = var.pvs_backup_network
   cloud_connection_reuse      = var.cloud_connection_reuse
   cloud_connection_name       = var.cloud_connection_name
   cloud_connection_count      = var.cloud_connection_count
   cloud_connection_speed      = var.cloud_connection_speed
-  pvs_subnet_names            = var.pvs_subnet_names
+  pvs_subnet_names            = [var.pvs_management_network.name,var.pvs_backup_network]
   cloud_connection_vpc_enable = var.cloud_connection_vpc_enable
   ibmcloud_api_key            = var.ibmcloud_api_key
   vpc_region                  = var.vpc_region
@@ -61,19 +60,18 @@ module "power-sap-infrastructure" {
 | pvs\_image\_names | List of Images to be imported into cloud account from catalog images | list(string) | ["Linux-SUSE-SAP-12-4","Linux-RHEL-SAP-8-1"] | yes |
 | pvs\_public\_network\_name | Name of PowerVS Public Network which will be created  | string | public_net | yes |
 | pvs\_management\_network | PowerVS Management Subnet name and cidr which will be created. | map | n/a | yes |
-| pvs\_sap\_network | PowerVS SAP Subnet name and cidr which will be created. | map | n/a | yes |
 | pvs\_backup\_network | PowerVS Backup Network name and cidr which will be created. | map | n/a | yes |
 | cloud\_connection\_reuse | Resuse existing Cloud connection to attach PVS subnets | bool | n/a | yes |
-| cloud\_connection\_name | Name of the Cloud connection which will be created | string | n/a | yes |
-| cloud\_connection\_count | Required number of Cloud connections | string | n/a | yes |
-| cloud\_connection\_speed | Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000 | string | n/a | yes |
-| pvs\_subnet\_names | List of PowerVs subnet names to be attached to Cloud connection | list | n/a | yes |
+| cloud\_connection\_name | Name of the Cloud connection which will be created/ Reused to attach subnets | string | n/a | yes |
+| cloud\_connection\_count | Required number of Cloud connections. Ignore when Reusing  | string | 2| yes |
+| cloud\_connection\_speed | Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000. Required when creating new connection | string | null | yes |
 | ibmcloud\_api\_key | Cloud Api Key for provider | string | null | optional |
-| cloud\_connection\_vpc_enable | Enable VPC for this cloud connection | bool | n/a | yes |
-| vpc\_region | IBM Cloud zone | string | null | yes |
-| vpc\_names | Existing VPC Names which has to be attached to Cloud connection | list | null | yes |
-| cloud\_connection\_gr | Enable global routing for this cloud connection | bool | n/a | yes |
-| cloud\_connection\_metered | Enable metered for this cloud connection | bool | n/a | yes |
+| cloud\_connection\_vpc_enable | Enable VPC for this cloud connection. Required when creating new connection  | bool | false | optional |
+| vpc\_region | IBM Cloud zone. Required when creating new connection  | string | null | optional |
+| vpc\_names | Existing VPC Names which has to be attached to Cloud connection. Required when creating new connection | list | null | optional |
+| cloud\_connection\_gr | Enable global routing for this cloud connection.Can be specified when creating new connection | bool | null | optional |
+| cloud\_connection\_metered | Enable metered for this cloud connection. Can be specified when creating new connection | bool | null | optional |
+
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

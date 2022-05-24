@@ -36,8 +36,8 @@ This example illustrates how to use the `power-sap-infrastructure` module.
 | cloud\_connection\_count | Required number of Cloud connections. Ignore when Reusing  | string | 2| yes |
 | cloud\_connection\_speed | Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000. Required when creating new connection | string | null | yes |
 | ibmcloud\_api\_key | Cloud Api Key for provider | string | null | optional |
-| cloud\_connection\_vpc_enable | Enable VPC for this cloud connection. Required when creating new connection  | bool | false | optional |
 | vpc\_region | IBM Cloud zone. Required when creating new connection  | string | null | optional |
+| cloud\_connection\_vpc_enable | Enable VPC for this cloud connection. Required when creating new connection  | bool | false | optional |
 | vpc\_names | Existing VPC Names which has to be attached to Cloud connection. Required when creating new connection | list | null | optional |
 | cloud\_connection\_gr | Enable global routing for this cloud connection.Can be specified when creating new connection | bool | null | optional |
 | cloud\_connection\_metered | Enable metered for this cloud connection. Can be specified when creating new connection | bool | null | optional |

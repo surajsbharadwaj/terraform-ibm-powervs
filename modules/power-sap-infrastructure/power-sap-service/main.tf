@@ -81,18 +81,8 @@ resource "ibm_pi_network" "management_network" {
   pi_network_jumbo     = true
 }
 
-resource "ibm_pi_network" "sap_network" {
-  depends_on           = [ibm_pi_network.management_network]
-  pi_cloud_instance_id = ibm_resource_instance.pvs_service.guid
-  pi_network_name      = var.pvs_sap_network["name"]
-  pi_cidr              = var.pvs_sap_network["cidr"]
-  pi_dns               = ["127.0.0.1"]
-  pi_network_type      = "vlan"
-  pi_network_jumbo     = true
-}
-
 resource "ibm_pi_network" "backup_network" {
-  depends_on           = [ibm_pi_network.sap_network]
+  depends_on           = [ibm_pi_network.management_network]
   pi_cloud_instance_id = ibm_resource_instance.pvs_service.guid
   pi_network_name      = var.pvs_backup_network["name"]
   pi_cidr              = var.pvs_backup_network["cidr"]

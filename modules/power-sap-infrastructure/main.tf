@@ -15,7 +15,6 @@ module "sap-service" {
   pvs_image_names           = var.pvs_image_names
   pvs_public_network_name   = var.pvs_public_network_name
   pvs_management_network    = var.pvs_management_network
-  pvs_sap_network           = var.pvs_sap_network
   pvs_backup_network        = var.pvs_backup_network
 }
 
