@@ -74,11 +74,7 @@ variable "cloud_connection_count" {
 variable "cloud_connection_speed" {
   description = "Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000"
   type        = string
-}
-
-variable "pvs_subnet_names" {
-  description = "List of PowerVs subnet names to be attached to Cloud connection"
-  type        = list
+  default     = null
 }
 
 variable "cloud_connection_vpc_enable" {
@@ -101,11 +97,13 @@ variable "vpc_names" {
 variable "cloud_connection_gr" {
   description = "Enable global routing for this cloud connection"
   type        = bool
+  default     = null
 }
 
 variable "cloud_connection_metered" {
   description = "Enable metered for this cloud connection"
   type        = bool
+  default     = null
 }
 
 #####################################################

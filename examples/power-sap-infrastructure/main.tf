@@ -28,7 +28,7 @@ module "pvs" {
   cloud_connection_name       = var.cloud_connection_name
   cloud_connection_count      = var.cloud_connection_count
   cloud_connection_speed      = var.cloud_connection_speed
-  pvs_subnet_names            = var.pvs_subnet_names
+  pvs_subnet_names            = [var.pvs_management_network.name,var.pvs_sap_network.name,var.pvs_backup_network.name]
   cloud_connection_vpc_enable = var.cloud_connection_vpc_enable
   ibmcloud_api_key            = var.ibmcloud_api_key
   vpc_region                  = var.vpc_region

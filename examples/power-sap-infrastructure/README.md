@@ -33,15 +33,14 @@ This example illustrates how to use the `power-sap-infrastructure` module.
 | pvs\_backup\_network | PowerVS Backup Network name and cidr which will be created. | map | n/a | yes |
 | cloud\_connection\_reuse | Resuse existing Cloud connection to attach PVS subnets | bool | n/a | yes |
 | cloud\_connection\_name | Name of the Cloud connection which will be created | string | n/a | yes |
-| cloud\_connection\_count | Required number of Cloud connections | string | n/a | yes |
-| cloud\_connection\_speed | Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000 | string | n/a | yes |
-| pvs\_subnet\_names | List of PowerVs subnet names to be attached to Cloud connection | list | n/a | yes |
+| cloud\_connection\_count | Required number of Cloud connections | string | null| yes |
+| cloud\_connection\_speed | Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000 | string | null | yes |
 | ibmcloud\_api\_key | Cloud Api Key for provider | string | null | optional |
-| cloud\_connection\_vpc_enable | Enable VPC for this cloud connection | bool | n/a | yes |
+| cloud\_connection\_vpc_enable | Enable VPC for this cloud connection | bool | null | yes |
 | vpc\_region | IBM Cloud zone | string | null | yes |
 | vpc\_names | Existing VPC Names which has to be attached to Cloud connection | list | null | yes |
-| cloud\_connection\_gr | Enable global routing for this cloud connection | bool | n/a | yes |
-| cloud\_connection\_metered | Enable metered for this cloud connection | bool | n/a | yes |
+| cloud\_connection\_gr | Enable global routing for this cloud connection | bool | null | yes |
+| cloud\_connection\_metered | Enable metered for this cloud connection | bool | null | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
