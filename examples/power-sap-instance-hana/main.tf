@@ -32,5 +32,5 @@ module "hana" {
   ssh_private_key                = var.ssh_private_key
   vpc_address_prefix             = var.vpc_address_prefix
   suse_activation                = var.suse_activation
-  sap_solution                   = var.sap_solution
+  sap_solution                   = "HANA"
 }

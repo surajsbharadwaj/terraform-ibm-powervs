@@ -124,12 +124,6 @@ variable "suse_activation" {
                 }
 }
 
-variable "sap_solution" {
-  description = "To Execute Playbooks for Hana or Netweaver. Value can be either HANA OR NETWEAVER"
-  type        = string
-  default     = "NETWEAVER"
-}
-
 #####################################################
 # Optional Parameters
 #####################################################
