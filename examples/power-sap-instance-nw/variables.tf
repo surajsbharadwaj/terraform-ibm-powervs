@@ -27,6 +27,7 @@ variable "pvs_service_name" {
 variable "pvs_instance_hostname" {
   description = "Name of instance which will be created"
   type        = string
+  default     = "nw-power"
 }
 
 variable "pvs_sshkey_name" {
@@ -47,18 +48,21 @@ variable "pvs_instance_sys_type" {
 }
 
 variable "pvs_instance_proc_type" {
-  description = "Dedicated or shared processors"
+  description = "Dedicated or shared or uncapped processors"
   type        = string
+  default     = "dedicated"
 }
 
 variable "pvs_instance_processors" {
   description = "Number of processors"
   type        = string
+  default     = "4"
 }
 
 variable "pvs_instance_memory" {
   description = "Amount of memory"
   type        = string
+  default     = "400"
 }
 
 variable "pvs_instance_private_net_names" {
@@ -69,13 +73,13 @@ variable "pvs_instance_private_net_names" {
 variable "pvs_instance_storage_config" {
   description = "DISKS To be created and attached to node.Comma separated values"
   type        = map
-  default     = {
-                    names      = ""
-                    paths      = ""
-                    disks_size = ""
-                    counts     = ""
-                    tiers      = ""
-  }
+  default     = { 
+                   names      = "usrsap,usrtrans"
+                   disks_size = "50,60"
+                   counts     = "1,1"
+				   tiers      = "tier3,tier3"
+                   paths      = "/usr/sap,/usr/sap/trans"
+                }
 }
 
 #####################################################
@@ -86,6 +90,7 @@ variable "pvs_instance_storage_config" {
 variable "proxy_config" {
   description = "Value either SNAT or SQUID to use as proxy"
   type        = string
+  default     = "SQUID"
 }
 
 variable "bastion_public_ip" {

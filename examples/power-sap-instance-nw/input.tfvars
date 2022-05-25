@@ -17,15 +17,15 @@ pvs_sshkey_name                = "publish"
 pvs_instance_image_name        = "Linux-SUSE-SAP-12-4"
 pvs_instance_sys_type          = "s922"
 pvs_instance_proc_type         = "dedicated"
-pvs_instance_processors        = "2"
+pvs_instance_processors        = "4"
 pvs_instance_memory            = "200"
 pvs_instance_private_net_names = [ "mgmt_net","sap_net","bkp_net"]
 pvs_instance_storage_config    = { 
-                                   names      = "sapmnt,usrsap,usrtrans"
-                                   disks_size = "50,20,130"
-                                   counts     = "1,1,1"
-								   tiers      = "tier3,tier3,tier3"
-                                   paths      = "/sapmnt,/usr/sap,/usr/sap/trans"
+                                   names      = "usrsap,usrtrans"
+                                   disks_size = "50,60"
+                                   counts     = "1,1"
+								   tiers      = "tier3,tier3"
+                                   paths      = "/usr/sap,/usr/sap/trans"
                                   }
 
 proxy_config                   = "SQUID"
@@ -59,15 +59,15 @@ pvs_sshkey_name                = "publish"
 pvs_instance_image_name        = "Linux-SUSE-SAP-12-4"
 pvs_instance_sys_type          = "s922"
 pvs_instance_proc_type         = "dedicated"
-pvs_instance_processors        = "2"
+pvs_instance_processors        = "4"
 pvs_instance_memory            = "200"
 pvs_instance_private_net_names = [ "mgmt_net","sap_net","bkp_net"]
 pvs_instance_storage_config    = { 
-                                   names  = "sapmnt,usrsap,usrtrans"
-                                   disks_size = "50,20,130"
-                                   counts = "1,1,1"
-								   tiers  = "tier3,tier3,tier3"
-                                   paths  = "/sapmnt,/usr/sap,/usr/sap/trans"
+                                   names  = "usrsap,usrtrans"
+                                   disks_size = "50,60"
+                                   counts = "1,1"
+								   tiers  = "tier3,tier3"
+                                   paths  = "/usr/sap,/usr/sap/trans"
                                   }
           
 proxy_config                   = "SNAT"
