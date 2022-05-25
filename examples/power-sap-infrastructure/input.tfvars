@@ -20,10 +20,6 @@ pvs_management_network  = {
   name = "mgmt_net"
   cidr = "10.97.0.1/24"
 }
-pvs_sap_network         = {
-  name = "sap_net"
-  cidr = "10.98.0.1/24"
-}
 pvs_backup_network      = {
   name = "bkp_net"
   cidr = "10.99.0.1/24"

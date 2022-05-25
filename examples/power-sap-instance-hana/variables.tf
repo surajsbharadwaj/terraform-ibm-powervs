@@ -43,7 +43,7 @@ variable "pvs_instance_image_name" {
 variable "pvs_instance_profile_id" {
   description = "SAP PROFILE ID. If this is mentioned then Memory, processors, proc_type and sys_type will not be taken into account"
   type        = string
-  default     = null
+  default     = "ush1-4x128"
 }
 
 variable "pvs_instance_private_net_names" {
@@ -54,13 +54,13 @@ variable "pvs_instance_private_net_names" {
 variable "pvs_instance_storage_config" {
   description = "DISKS To be created and attached to node.Comma separated values"
   type        = map
-  default     = {
-                    names      = ""
-                    paths      = ""
-                    disks_size = ""
-                    counts     = ""
-                    tiers      = ""
-  }
+  default     = { 
+                  names  = "data,log,shared,usrsap"
+                  disks_size = "180,200,300,50"
+                  counts = "8,8,1,1"
+                  tiers  = "tier1,tier1,tier3,tier3"
+                  paths  = "/hana/data,/hana/log,/hana/shared,/usr/sap"
+                }
 }
 
 #####################################################
