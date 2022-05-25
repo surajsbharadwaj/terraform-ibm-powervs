@@ -91,7 +91,7 @@ variable "ssh_private_key" {
 variable "vpc_address_prefix" {
   description = "Existing Address prefix of VPC to reach the HANA/NW node from machine on vpc"
   type        = string
-  default     = null
+  default     = ""
 }
 
 variable "suse_activation" {
