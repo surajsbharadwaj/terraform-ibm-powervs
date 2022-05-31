@@ -3,7 +3,7 @@
 # Copyright 2022 IBM
 #####################################################
 
- 
+
 module "import-image" {
   source                         = "./power-image-import"
   count                          = var.brownfield ? 1 : 0
