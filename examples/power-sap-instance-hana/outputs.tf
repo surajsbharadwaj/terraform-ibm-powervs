@@ -3,5 +3,5 @@ output "BASTION_PUBLIC_IP" {
 }
 
 output "PVS_HANA_IPS" {
-  value      = module.hana.pvs_hana_ips
+  value      = module.hana.pvs_instance_ips
 }

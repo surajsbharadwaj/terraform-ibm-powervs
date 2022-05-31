@@ -64,6 +64,12 @@ variable "pvs_instance_private_net_names" {
   type        = list
 }
 
+variable "pvs_instance_private_net_ids" {
+  description = "Additional network ids to be attached"
+  type        = list 
+  default     = null
+}
+
 variable "pvs_instance_storage_config" {
   description = "DISKS To be created and attached to node.Comma separated values"
   type        = map

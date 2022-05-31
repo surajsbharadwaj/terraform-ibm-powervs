@@ -35,11 +35,14 @@ data "ibm_pi_image" "image_ds" {
 }
 
 data "ibm_pi_network" "pvs_subnets_ds" {
-  count                = length(var.pvs_instance_private_net_names)
+  count                = var.pvs_instance_private_net_ids != null || var.pvs_instance_private_net_ids !="" ? length(var.pvs_instance_private_net_names)-1 : length(var.pvs_instance_private_net_names)
   pi_cloud_instance_id = data.ibm_resource_instance.pvs_service_ds.guid
   pi_network_name      = var.pvs_instance_private_net_names[count.index]
 }
 
+locals{
+network_ids = var.pvs_instance_private_net_ids != null && var.pvs_instance_private_net_ids != "" ? concat(tolist(data.ibm_pi_network.pvs_subnets_ds.*.id),var.pvs_instance_private_net_ids) : tolist(data.ibm_pi_network.pvs_subnets_ds.*.id)
+}
 #####################################################
 # Create PowerVs Instance
 # Copyright 2022 IBM
@@ -60,7 +63,7 @@ resource "ibm_pi_instance" "sap_instance" {
   pi_storage_type          = local.storage_type
   
   dynamic "pi_network" {
-      for_each = tolist(data.ibm_pi_network.pvs_subnets_ds.*.id)
+      for_each = local.network_ids
       content {
          network_id = pi_network.value
               }

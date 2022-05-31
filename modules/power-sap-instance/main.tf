@@ -30,7 +30,9 @@ module "instance-sap" {
   pvs_instance_processors        = var.pvs_instance_processors
   pvs_instance_memory            = var.pvs_instance_memory
   pvs_instance_private_net_names = var.pvs_instance_private_net_names
+  pvs_instance_private_net_ids   = var.pvs_instance_private_net_ids
   pvs_instance_storage_config    = var.pvs_instance_storage_config
+
 }
 
 module "instance-sap-init-sles" {
