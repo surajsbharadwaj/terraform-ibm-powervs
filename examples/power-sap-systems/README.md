@@ -73,9 +73,9 @@ This example illustrates how to use the `power-sap-instance` module.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_BASTION_PUBLIC_IP"></a> [BASTION\_PUBLIC\_IP](#output\_BASTION\_PUBLIC\_IP) | n/a |
-| <a name="output_PVS_HANA_IPS"></a> [PVS\_HANA\_IPS](#output\_PVS\_HANA\_IPS) | n/a |
-| <a name="output_PVS_NW_IPS"></a> [PVS\_NW\_IPS](#output\_PVS\_NW\_IPS) | n/a |
+| <a name="output_BASTION_PUBLIC_IP"></a> [BASTION\_PUBLIC\_IP](#output\_BASTION\_PUBLIC\_IP) | Public IP of Provided Bastion/JumpServer Host |
+| <a name="output_PVS_HANA_IPS"></a> [PVS\_HANA\_IPS](#output\_PVS\_HANA\_IPS) | All private IPS of HANA instance |
+| <a name="output_PVS_NW_IPS"></a> [PVS\_NW\_IPS](#output\_PVS\_NW\_IPS) | All private IPs of NW instances |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
