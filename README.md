@@ -36,7 +36,7 @@ To execute and start building the configuration defined in the plan (provisions 
 
 `terraform apply -var-file=./input.tfvars`
 
-To destroy the VPC and all related resources
+To destroy the PowerVS and all related resources
 
 `terraform destroy -var-file=./input.tfvars`
 
