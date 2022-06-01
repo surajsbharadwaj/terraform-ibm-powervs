@@ -82,13 +82,13 @@ variable "pvs_instance_storage_config" {
                     names      = ""
                     paths      = ""
                     disks_size = ""
-					          counts     = ""
+					counts     = ""
                     tiers      = ""
   }
 }
 
 #####################################################
-# PVS SAP instnace Initializatiion 
+# PVS SAP instance Initialization 
 # Copyright 2022 IBM
 #####################################################
 
@@ -129,6 +129,6 @@ variable "suse_activation" {
 }
 
 variable "sap_solution" {
-  description = "To Execute Playbooks for Hana or Netweaver. Value can be either HANA OR NETWEAVER"
+  description = "To Execute Playbooks for Hana or NetWeaver. Value can be either HANA OR NETWEAVER"
   type        = string
 }
