@@ -4,7 +4,6 @@ It creates empty SAP SYSTEM landscape:
 - 1 SAP network and attaches it to Cloud connection
 - 1 HANA instance on e980 PowerVS with specified volumes
 - N number of Netweaver instances on s922 PowerVS 
-- 
 
 This example illustrates how to use the `power-sap-instance` module.
 
