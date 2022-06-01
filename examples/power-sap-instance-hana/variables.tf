@@ -21,6 +21,7 @@ variable "pvs_service_name" {
 variable "pvs_instance_hostname" {
   description = "Name of instance which will be created"
   type        = string
+  default     = "hana-power"
 }
 
 variable "pvs_sshkey_name" {
