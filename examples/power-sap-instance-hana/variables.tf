@@ -13,12 +13,6 @@ variable "pvs_resource_group_name" {
   type        = string
 }
 
-variable "brownfield" {
-  description = "Existing Cloud PowerVS Service project. Set to true"
-  type        = bool
-  default     = true
-}
-
 variable "pvs_service_name" {
   description = "Existing Name of the PowerVS service"
   type        = string

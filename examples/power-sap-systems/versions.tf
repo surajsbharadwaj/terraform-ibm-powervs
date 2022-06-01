@@ -1,5 +1,5 @@
 #####################################################
-# powervs service Module
+# PowerVs SAP Instance Module
 # Copyright 2022 IBM
 #####################################################
 

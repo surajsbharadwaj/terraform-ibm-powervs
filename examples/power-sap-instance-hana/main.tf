@@ -10,12 +10,12 @@ provider "ibm" {
 }
 
 module "hana" {
-  // source = "terraform-ibm-modules/powervs/ibm//modules/power-sap-instance"
+  // source = "terraform-ibm-modules/powervs/ibm/modules/power-sap-instance"
   source = "../../modules/power-sap-instance"
   
   pvs_zone                       = var.pvs_zone
   pvs_resource_group_name        = var.pvs_resource_group_name
-  brownfield                     = var.brownfield
+  brownfield                     = true
   pvs_service_name               = var.pvs_service_name
   pvs_instance_hostname          = var.pvs_instance_hostname
   pvs_sshkey_name                = var.pvs_sshkey_name

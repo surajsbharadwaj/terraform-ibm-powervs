@@ -46,7 +46,7 @@ module "hana" {
   
   pvs_zone                       = var.pvs_zone
   pvs_resource_group_name        = var.pvs_resource_group_name
-  brownfield                     = var.brownfield
+  brownfield                     = true
   pvs_service_name               = var.pvs_service_name
   pvs_instance_hostname          = var.pvs_hana_instance_hostname
   pvs_sshkey_name                = var.pvs_sshkey_name
@@ -75,7 +75,7 @@ module "netweaver" {
   
   pvs_zone                       = var.pvs_zone
   pvs_resource_group_name        = var.pvs_resource_group_name
-  brownfield                     = var.brownfield
+  brownfield                     = true
   pvs_service_name               = var.pvs_service_name
   pvs_instance_hostname          = "${var.pvs_nw_instance_hostname}-${count.index + 1}"
   pvs_sshkey_name                = var.pvs_sshkey_name

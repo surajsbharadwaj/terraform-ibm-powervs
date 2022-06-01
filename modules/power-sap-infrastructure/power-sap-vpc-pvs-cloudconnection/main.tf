@@ -85,7 +85,7 @@ resource "ibm_pi_cloud_connection" "cloud_connection_backup" {
 } 
 
 #####################################################
-# Resue Cloud Connection to attach PVS subnets
+# Reuse Cloud Connection to attach PVS subnets
 # Copyright 2022 IBM
 #####################################################
 
