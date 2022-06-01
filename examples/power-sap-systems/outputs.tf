@@ -1,11 +1,14 @@
 output "BASTION_PUBLIC_IP" {
-  value      = module.hana.bastion_public_ip
+  description = "Public IP of Provided Bastion/JumpServer Host"
+  value       = module.hana.bastion_public_ip
 }
 
 output "PVS_HANA_IPS" {
-  value      = module.hana.pvs_instance_ips
+  description = "All private IPS of HANA instance"
+  value       = module.hana.pvs_instance_ips
 }
 
 output "PVS_NW_IPS" {
-  value      = module.netweaver.*.pvs_instance_ips
+  description = "All private IPs of NW instances"
+  value       = module.netweaver.*.pvs_instance_ips
 }
