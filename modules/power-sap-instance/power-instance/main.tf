@@ -35,7 +35,7 @@ data "ibm_pi_image" "image_ds" {
 }
 
 data "ibm_pi_network" "pvs_subnets_ds" {
-  count                = var.pvs_instance_private_net_ids != null || var.pvs_instance_private_net_ids !="" ? length(var.pvs_instance_private_net_names)-1 : length(var.pvs_instance_private_net_names)
+  count                = var.pvs_instance_private_net_ids != null && var.pvs_instance_private_net_ids !="" ? length(var.pvs_instance_private_net_names)-1 : length(var.pvs_instance_private_net_names)
   pi_cloud_instance_id = data.ibm_resource_instance.pvs_service_ds.guid
   pi_network_name      = var.pvs_instance_private_net_names[count.index]
 }

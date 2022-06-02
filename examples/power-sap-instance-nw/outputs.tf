@@ -5,5 +5,5 @@ output "BASTION_PUBLIC_IP" {
 
 output "PVS_NW_IPS" {
   description = "All private IPS of NetWeaver instance"
-  value      = module.netweaver.pvs_hana_ips
+  value      = module.netweaver.pvs_instance_ips
 }
