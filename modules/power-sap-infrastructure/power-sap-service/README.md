@@ -11,7 +11,7 @@ provider "ibm" {
 }
 
 module "pvs" {
-  //source = "terraform-ibm-modules/powervs/ibm//modules/pvs"
+  //source = "terraform-ibm-modules/powervs/ibm/modules/pvs"
 
   pvs_zone                  = var.pvs_zone
   pvs_resource_group_name   = var.pvs_resource_group_name
