@@ -130,4 +130,5 @@ variable "sap_solution" {
 variable "sap_domain" {
   description = "Domain name to be set"
   type        = string
+  default     = null
 }
