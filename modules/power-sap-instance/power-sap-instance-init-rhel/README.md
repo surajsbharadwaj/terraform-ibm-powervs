@@ -4,7 +4,7 @@ This module configures the PVS instance and prepares the system for SAP installa
 - Configure Forward Proxy
 - RHEL Registration
 - Install Packages
-- Run ansible galaxy roles 
+- Run ansible galaxy roles to configure filesystems, prepare OS for HANA and netweaver installation
 
 ## Example Usage
 ```
