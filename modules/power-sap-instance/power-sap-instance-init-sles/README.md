@@ -1,7 +1,6 @@
 # Module pvs-instance-sap-init-sles
 
 This module configures the PVS instance and prepares the system for SAP installation. 
-- Add routes to VPC
 - Configure SNAT
 - Configure Forward Proxy
 - SUSE Registration
@@ -17,7 +16,6 @@ module "instance-sap-init-sles" {
   bastion_public_ip            = var.bastion_public_ip
   host_private_ip              = var.host_private_ip
   ssh_private_key              = var.ssh_private_key
-  vpc_address_prefix           = var.vpc_address_prefix
   pvs_bastion_snat_config      = { 
                                    required               = var.pvs_bastion_snat_config[required]
                                    pvs_bastion_private_ip = var.pvs_bastion_private_ip[pvs_bastion_private_ip]                              }
@@ -26,7 +24,7 @@ module "instance-sap-init-sles" {
                                    vpc_bastion_private_ip = var.vpc_bastion_proxy_config[vpc_bastion_private_ip]
                                    no_proxy_ips           = var.vpc_bastion_proxy_config[no_proxy_ips]
                                  }
-  suse_activation              = var.suse_activation                                
+  os_activation                = var.os_activation                                
   pvs_instance_storage_config  = var.pvs_instance_storage_config
   sap_solution                 = var.sap_solution
 }
@@ -34,18 +32,28 @@ module "instance-sap-init-sles" {
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
+## Resources
+
+| Name | Type |
+|------|------|
+| [null_resource.configure_proxy](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.configure_snat](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.execute_ansible_role](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.install_packages](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.suse_register](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+
 ## Inputs
 
-| Name                              | Description                                           | Type   | Default | Required |
-|-----------------------------------|-------------------------------------------------------|--------|---------|----------|
-| bastion_public_ip | Public IP of Bastion Host | string | n/a | yes |
-| host_private_ip | Private IP of Netweaver/HANA Host reachable from bastion | string | n/a | yes |
-| ssh_private_key | Private Key to confgure Instance, Will not be uploaded to server | string | n/a | yes |
-| vpc_address_prefix | Existing Address prefix of VPC to reach the HANA/NW node from machine on vpc | string | n/a | yes |
-| pvs_bastion_snat_config | SNAT configuration if required on HANA/nw node to reach public internet via the Bastion host on Power Server | map | {<br />required = false<br />pvs_bastion_private_ip = ""<br />} | yes |
-| vpc_bastion_proxy_config | SQUID configuration if required on HANA/nw node to reach public internet via the Bastion host on VSI running SQUID server | map | {<br />required = false<br />vpc_bastion_private_ip = ""<br />no_proxy_ips = ""<br />} | yes |
-| suse_activation | Suse activation email and code to register for suse | map | {<br />required = false<br />activation_email = ""<br />activation_code  = ""<br />} | yes |
-| pvs_instance_storage_config | Disks properties to create filesystems | map | {<br />names = ""<br />paths = ""<br />disks_size = ""<br />counts = ""<br />wwns  = ""<br />} | yes |
-| sap_solution | To Execute Playbooks for Hana or Netweaver. Value can be either HANA OR NETWEAVER | string | n/a | yes |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_bastion_public_ip"></a> [bastion\_public\_ip](#input\_bastion\_public\_ip) | Public IP of Bastion Host | `string` | n/a | yes |
+| <a name="input_host_private_ip"></a> [host\_private\_ip](#input\_host\_private\_ip) | Private IP of Netweaver/HANA Host reachable from bastion | `string` | n/a | yes |
+| <a name="input_ssh_private_key"></a> [ssh\_private\_key](#input\_ssh\_private\_key) | Private Key to confgure Instance, Will not be uploaded to server | `string` | n/a | yes |
+| <a name="input_pvs_bastion_snat_config"></a> [pvs\_bastion\_snat\_config](#input\_pvs\_bastion\_snat\_config) | SNAT configuration if required on HANA/nw node to reach public internet via the Bastion host on Power Server | `map` | <pre>{<br>  "pvs_bastion_private_ip": "",<br>  "required": false<br>}</pre> | optional |
+| <a name="input_vpc_bastion_proxy_config"></a> [vpc\_bastion\_proxy\_config](#input\_vpc\_bastion\_proxy\_config) | SQUID configuration if required on HANA/nw node to reach public internet via the Bastion host on VSI running SQUID server | `map` | <pre>{<br>  "no_proxy_ips": "",<br>  "required": false,<br>  "vpc_bastion_private_ip": ""<br>}</pre> | optional |
+| <a name="input_os_activation"></a> [os\_activation](#input\_os\_activation) | Suse activation email and code to register Os | `map` | <pre>{<br>  "activation_password": "",<br>  "activation_username": "",<br>  "required": false<br>}</pre> | optional |
+| <a name="input_pvs_instance_storage_config"></a> [pvs\_instance\_storage\_config](#input\_pvs\_instance\_storage\_config) | Disks properties to create filesystems | `map` | <pre>{<br>  "counts": "",<br>  "disks_size": "",<br>  "names": "",<br>  "paths": "",<br>  "wwns": ""<br>}</pre> | optional |
+| <a name="input_sap_solution"></a> [sap\_solution](#input\_sap\_solution) | To Execute Playbooks for Hana or Netweaver. Value can be either HANA OR NETWEAVER | `string` | n/a | yes |
+
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -1,42 +1,10 @@
 #####################################################
-# PowerVs Instance Initialization for SLES Configuration
+# PowerVs Instance Initialization for RHEL Configuration
 # Copyright 2022 IBM
 #####################################################
 
 locals {
   private_key = var.ssh_private_key
-}
-
-#####################################################
-# SNAT configuration
-# Copyright 2022 IBM
-#####################################################
-
-resource "null_resource" "configure_snat" {
-  count         = var.pvs_bastion_snat_config["required"] ? 1 : 0
-
-  connection {
-    type         = "ssh"
-    user         = "root"
-    bastion_host = var.bastion_public_ip
-    host         = var.host_private_ip
-    private_key  = local.private_key
-    agent        = false
-    timeout      = "15m"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-    
-    #### SNAT CLIENT CONFIG (eth0 has to be a management network) ####
-
-    "if [ -n '${var.pvs_bastion_snat_config["pvs_bastion_private_ip"]}' ]; then echo \"${var.pvs_bastion_snat_config["pvs_bastion_private_ip"]} $( ip route list | awk ' /^default/ {print $3}') - -\" >> /etc/sysconfig/network/ifroute-eth0; fi",
-    "grep -qxF \"NETCONFIG_DNS_STATIC_SERVERS=\"9.9.9.9\"\" /etc/sysconfig/network/config || sed -i '/^NETCONFIG_DNS_STATIC_SERVERS=/cNETCONFIG_DNS_STATIC_SERVERS=\"9.9.9.9\"' /etc/sysconfig/network/config",
-    "rm -rf /etc/resolv.conf",    
-    "/usr/bin/systemctl restart network ", 
-
-    ]
-  }
 }
 
 #####################################################
@@ -62,22 +30,25 @@ resource "null_resource" "configure_proxy" {
 
     #######  SQUID Forward PROXY CLIENT SETUP ############
 
-    "echo -e \"export http_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport https_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport HTTP_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport HTTPS_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport no_proxy='${var.vpc_bastion_proxy_config["no_proxy_ips"]}'\nexport NO_PROXY='${var.vpc_bastion_proxy_config["no_proxy_ips"]}'\" >> /etc/bash.bashrc",
-	
-    "/usr/bin/systemctl restart network ", 
+    "echo -e \"export http_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport https_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport HTTP_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport HTTPS_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport no_proxy='${var.vpc_bastion_proxy_config["no_proxy_ips"]}'\nexport NO_PROXY='${var.vpc_bastion_proxy_config["no_proxy_ips"]}'\" >> /etc/bashrc",
 
+    "echo \"proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\" >> /etc/dnf/dnf.conf",
+	
+	###### Restart Network #######
+	
+    "/usr/bin/systemctl restart NetworkManager ", 
     ]
   }
 }
 
 #####################################################
-# SUSE Registration
+# RHEL Registration
 # Copyright 2022 IBM
 #####################################################
 
-resource "null_resource" "suse_register" {
+resource "null_resource" "rhel_register" {
   count         = var.os_activation["required"] ? 1 : 0
-  depends_on    = [null_resource.configure_proxy,null_resource.configure_snat]
+  depends_on    = [null_resource.configure_proxy]
 
   connection {
     type         = "ssh"
@@ -92,24 +63,22 @@ resource "null_resource" "suse_register" {
   provisioner "remote-exec" {
     inline = [
     
-    ##### Register SUSE and PACKAGES INSTALLATON #####
-    "mv /etc/SUSEConnect /etc/SUSEConnect.bkpp 2>/dev/null || :",
-    "SUSEConnect -d &> /dev/null || true :",
-    "SUSEConnect --cleanup",
-    "SUSEConnect -r ${var.os_activation["activation_password"]} -e ${var.os_activation["activation_username"]}",
-    "SUSEConnect -p sle-module-public-cloud/12/ppc64le",
+    ##### Register RHEL #####
+    "subscription-manager register --username ${var.os_activation["activation_username"]} --password ${var.os_activation["activation_password"]} --auto-attach --force",
+    "subscription-manager release  --set=8.4",
+    "subscription-manager repos --enable=rhel-8-for-ppc64le-baseos-e4s-rpms --enable=rhel-8-for-ppc64le-appstream-e4s-rpms --enable=rhel-8-for-ppc64le-sap-solutions-e4s-rpms --enable=rhel-8-for-ppc64le-sap-netweaver-e4s-rpms" 
 
     ]
   }
 }
 
 #####################################################
-# Install Necessary Packages
+# Install Necessary Packages On RHEL
 # Copyright 2022 IBM
 #####################################################
 
 resource "null_resource" "install_packages" {
-  depends_on    = [null_resource.suse_register] 
+  depends_on    = [null_resource.rhel_register] 
 
   connection {
     type         = "ssh"
@@ -124,10 +93,11 @@ resource "null_resource" "install_packages" {
   provisioner "remote-exec" {
     inline = [
     
-    ##### Install Ansible #####
+    ##### Install Ansible, Git and Expect packages #####
 	
-    "zypper install -y python-pip",
-    "pip install -q ansible ",
+    "yum install -y ansible",
+    "yum install -y git",
+    "yum install -y expect"
 
     ]
   }
@@ -135,7 +105,7 @@ resource "null_resource" "install_packages" {
 
 
 #####################################################
-# Execute ANsbile galaxy role to prepare the system 
+# Execute Ansible galaxy role to prepare the system 
 # for SAP installation
 # Copyright 2022 IBM
 #####################################################
@@ -165,7 +135,7 @@ resource "null_resource" "execute_ansible_role" {
 disks_configuration : ${jsonencode(local.disks_config)}
 sap_solution : '${var.sap_solution}'
 terraform_wrapper : True
-host_ip: '${var.host_private_ip}'
+sap_domain: '${var.sap_domain}'
 EOF
 
    destination = "terraform_vars.yml"
@@ -174,10 +144,11 @@ EOF
   provisioner "remote-exec" {
     inline = [
 
-    ####  Execute ansible roles: prepare_sles_sap, fs_creation and swap_creation  ####
+    ####  Execute ansible roles: prepare_rhel_sap, fs_creation and swap_creation  ####
 
     "ansible-galaxy collection install sahityajain123.ansible_powervs_linux_sap",
-    "unbuffer ansible-playbook --connection=local -i 'localhost,' ~/.ansible/collections/ansible_collections/sahityajain123/ansible_powervs_linux_sap/playbooks/files/playbook-sles.yml --extra-vars '@/root/terraform_vars.yml' 2>&1 | tee ansible_execution.log ",
+	"ansible-galaxy install -r ~/.ansible/roles/sahityajain123.power_linux_sap_prepare/requirements.yml --force",
+    "unbuffer ansible-playbook --connection=local -i 'localhost,' ~/.ansible/collections/ansible_collections/sahityajain123/ansible_powervs_linux_sap/playbooks/files/playbook-rhel.yml --extra-vars '@/root/terraform_vars.yml' 2>&1 | tee ansible_execution.log ",
     ]
   }
 

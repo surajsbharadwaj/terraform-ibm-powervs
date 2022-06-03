@@ -36,13 +36,13 @@ module "instance-sap" {
 }
 
 module "instance-sap-init-sles" {
+  count                          = length(regexall(".*SUSE.*", var.pvs_instance_image_name)) > 0 ? 1: 0
   source                         = "./power-sap-instance-init-sles"
   depends_on                     = [module.instance-sap]
 
   bastion_public_ip              = var.bastion_public_ip
   host_private_ip                = module.instance-sap.instance_mgmt_ip
   ssh_private_key                = var.ssh_private_key
-  vpc_address_prefix             = var.vpc_address_prefix
   pvs_bastion_snat_config        = { 
                                      required               = var.proxy_config == "SNAT" ? true : false
                                      pvs_bastion_private_ip = var.bastion_private_ip
@@ -52,7 +52,26 @@ module "instance-sap-init-sles" {
                                      vpc_bastion_private_ip = var.bastion_private_ip
                                      no_proxy_ips           = module.instance-sap.instance_private_ips
                                    }
-  suse_activation                = var.suse_activation                                
+  os_activation                  = var.os_activation                                
   pvs_instance_storage_config    = merge(var.pvs_instance_storage_config,{"wwns" = join(",", module.instance-sap.instance_wwns)})
   sap_solution                   = var.sap_solution
+}
+
+module "instance-sap-init-rhel" {
+  count                          = length(regexall(".*RHEL.*", var.pvs_instance_image_name)) > 0 ? 1: 0
+  source                         = "./power-sap-instance-init-rhel"
+  depends_on                     = [module.instance-sap]
+
+  bastion_public_ip            = var.bastion_public_ip
+  host_private_ip              = module.instance-sap.instance_mgmt_ip
+  ssh_private_key              = var.ssh_private_key
+  vpc_bastion_proxy_config     = {
+                                   required               = var.proxy_config == "SQUID" ? true : false 
+                                   vpc_bastion_private_ip = var.bastion_private_ip
+                                   no_proxy_ips           = module.instance-sap.instance_private_ips
+                                 }
+  os_activation                = var.os_activation                                
+  pvs_instance_storage_config  = merge(var.pvs_instance_storage_config,{"wwns" = join(",", module.instance-sap.instance_wwns)})
+  sap_solution                 = var.sap_solution
+  sap_domain                   = var.sap_domain
 }
