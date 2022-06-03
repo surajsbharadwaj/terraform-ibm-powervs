@@ -73,7 +73,7 @@ module "instance-sap" {
 | <a name="input_ssh_private_key"></a> [ssh\_private\_key](#input\_ssh\_private\_key) | Private Key to configure Instance, Will not be uploaded to server | `string` | n/a | yes |
 | <a name="input_os_activation"></a> [os\_activation](#input\_os\_activation) | SUSE/RHEL activation email and code to register OS | `map` | <pre>{<br>  "activation_password": "",<br>  "activation_username": "",<br>  "required": false<br>}</pre> | optional |
 | <a name="input_sap_solution"></a> [sap\_solution](#input\_sap\_solution) | To Execute Playbooks for Hana or NetWeaver. Value can be either HANA OR NETWEAVER | `string` | n/a | yes |
-| <a name="input_sap_domain"></a> [sap\_domain](#input\_sap\_domain) | Domain name to be set | `string` | n/a | yes |
+| <a name="input_sap_domain"></a> [sap\_domain](#input\_sap\_domain) | Domain name to be set. Required when using RHEL image | `string` | null | yes |
 ## Outputs
 
 | Name                              | Description                                           | Type   |
