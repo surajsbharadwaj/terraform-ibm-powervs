@@ -128,7 +128,7 @@ variable "sap_solution" {
 }
 
 variable "sap_domain" {
-  description = "Domain name to be set"
+  description = "Domain name to be set. Required when using RHEL image"
   type        = string
   default     = null
 }
