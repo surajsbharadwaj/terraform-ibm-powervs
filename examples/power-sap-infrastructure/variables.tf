@@ -45,11 +45,6 @@ variable "pvs_management_network" {
   type        = map
 }
 
-variable "pvs_sap_network" {
-  description = "PowerVS SAP Subnet name and cidr which will be created."
-  type        = map
-}
-
 variable "pvs_backup_network" {
   description = "PowerVS Backup Network name and cidr which will be created."
   type        = map

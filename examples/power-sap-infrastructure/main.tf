@@ -10,7 +10,7 @@ provider "ibm" {
 }
 
 module "pvs" {
-  // source = "terraform-ibm-modules/powervs/ibm//modules/power-sap-infrastructure"
+  // source = "terraform-ibm-modules/powervs/ibm/modules/power-sap-infrastructure"
   source = "../../modules/power-sap-infrastructure"
   
   pvs_zone                    = var.pvs_zone

@@ -1,4 +1,4 @@
-# PowerVS Service Module Example
+# PowerVS SAP Infrastructure Module Example
 
 This example creates:
 
@@ -39,7 +39,6 @@ This example illustrates how to use the `power-sap-infrastructure` module.
 | <a name="input_pvs_image_names"></a> [pvs\_image\_names](#input\_pvs\_image\_names) | List of Images to be imported into cloud account from catalog images | `list(string)` | <pre>[<br>  "Linux-SUSE-SAP-12-4",<br>  "Linux-RHEL-SAP-8-1"<br>]</pre> | optional |
 | <a name="input_pvs_public_network_name"></a> [pvs\_public\_network\_name](#input\_pvs\_public\_network\_name) | Name of PowerVS Public Network which will be created | `string` | `"public_net"` | optional |
 | <a name="input_pvs_management_network"></a> [pvs\_management\_network](#input\_pvs\_management\_network) | PowerVS Management Subnet name and cidr which will be created. | `map` | n/a | yes |
-| <a name="input_pvs_sap_network"></a> [pvs\_sap\_network](#input\_pvs\_sap\_network) | PowerVS SAP Subnet name and cidr which will be created. | `map` | n/a | yes |
 | <a name="input_pvs_backup_network"></a> [pvs\_backup\_network](#input\_pvs\_backup\_network) | PowerVS Backup Network name and cidr which will be created. | `map` | n/a | yes |
 | <a name="input_cloud_connection_reuse"></a> [cloud\_connection\_reuse](#input\_cloud\_connection\_reuse) | Use existing Cloud connection to attach PVS subnets | `bool` | n/a | yes |
 | <a name="input_cloud_connection_name"></a> [cloud\_connection\_name](#input\_cloud\_connection\_name) | Name of the Cloud connection which will be created/ Existing name of cloud connection to attach subnets | `string` | n/a | yes |
