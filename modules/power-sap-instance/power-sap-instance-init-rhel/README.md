@@ -20,7 +20,7 @@ module "instance-sap-init-rhel" {
                                    vpc_bastion_private_ip = var.vpc_bastion_proxy_config[vpc_bastion_private_ip]
                                    no_proxy_ips           = var.vpc_bastion_proxy_config[no_proxy_ips]
                                  }
-  os_activation                = var.suse_activation                                
+  os_activation                = var.os_activation                                
   pvs_instance_storage_config  = var.pvs_instance_storage_config
   sap_solution                 = var.sap_solution
   sap_domain                   = var.sap_domain
