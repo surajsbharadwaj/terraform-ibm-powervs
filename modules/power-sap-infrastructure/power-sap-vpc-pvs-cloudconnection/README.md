@@ -11,7 +11,6 @@ provider "ibm" {
 }
 
 module "cloud-connection" {
-  //source = "terraform-ibm-modules/powervs/ibm//modules/cloud-connection"
 
   pvs_zone                    = var.pvs_zone   
   pvs_resource_group_name     = var.pvs_resource_group_name
