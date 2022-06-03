@@ -69,7 +69,7 @@ module "power-sap-infrastructure" {
 | <a name="input_cloud_connection_reuse"></a> [cloud\_connection\_reuse](#input\_cloud\_connection\_reuse) | Use existing Cloud connection to attach PVS subnets | `bool` | n/a | yes |
 | <a name="input_cloud_connection_name"></a> [cloud\_connection\_name](#input\_cloud\_connection\_name) | Name of the Cloud connection which will be created/ Existing name of cloud connection to attach subnets | `string` | n/a | yes |
 | <a name="input_cloud_connection_count"></a> [cloud\_connection\_count](#input\_cloud\_connection\_count) | Required number of Cloud connections. Ignore when Reusing. Maximum is 2 per location | `string` | `2` | optional |
-| <a name="input_cloud_connection_speed"></a> [cloud\_connection\_speed](#input\_cloud\_connection\_speed) | Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000. Required when creating new connection | `string` | `null` | optional |
+| <a name="input_cloud_connection_speed"></a> [cloud\_connection\_speed](#input\_cloud\_connection\_speed) | Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000. Required when creating new connection | `string` | `null` | yes |
 | <a name="input_pvs_tags"></a> [pvs\_tags](#input\_pvs\_tags) | List of Tag names for PowerVS service | `list(string)` | `null` | optional |
 | <a name="input_vpc_region"></a> [vpc\_region](#input\_vpc\_region) | IBM Cloud VPC Region. Required if cloud\_connection\_vpc\_enable is true | `string` | `null` | optional |
 | <a name="input_cloud_connection_vpc_enable"></a> [cloud\_connection\_vpc\_enable](#input\_cloud\_connection\_vpc\_enable) | Enable VPC for this cloud connection. Required when creating new connection | `bool` | `false` | optional |
