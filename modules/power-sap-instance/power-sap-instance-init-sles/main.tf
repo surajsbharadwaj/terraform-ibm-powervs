@@ -97,7 +97,7 @@ resource "null_resource" "suse_register" {
     "SUSEConnect -d &> /dev/null || true :",
     "SUSEConnect --cleanup",
     "SUSEConnect -r ${var.os_activation["activation_password"]} -e ${var.os_activation["activation_username"]}",
-    "SUSEConnect -p sle-module-public-cloud/12/ppc64le",
+    #"SUSEConnect -p sle-module-public-cloud/12/ppc64le",
 
     ]
   }

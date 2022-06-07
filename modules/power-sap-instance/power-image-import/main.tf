@@ -37,4 +37,6 @@ resource "ibm_pi_image" "image" {
   pi_cloud_instance_id = data.ibm_resource_instance.pvs_service_ds.guid
   pi_image_id          = local.catalog_image[0].image_id
   pi_image_name        = var.pvs_image_name
+  
+
 }

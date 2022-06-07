@@ -43,6 +43,7 @@ data "ibm_pi_network" "pvs_subnets_ds" {
 locals{
 network_ids = var.pvs_instance_private_net_ids != null && var.pvs_instance_private_net_ids != "" ? concat(tolist(data.ibm_pi_network.pvs_subnets_ds.*.id),var.pvs_instance_private_net_ids) : tolist(data.ibm_pi_network.pvs_subnets_ds.*.id)
 }
+
 #####################################################
 # Create PowerVs Instance
 # Copyright 2022 IBM

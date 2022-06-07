@@ -27,6 +27,9 @@ module "instance-sap" {
   pvs_instance_private_net_names = var.pvs_instance_private_net_names
   pvs_instance_private_net_ids   = var.pvs_instance_private_net_ids
   pvs_instance_storage_config    = var.pvs_instance_storage_config
+  
+  #### OS Initialization Variables
+  
   bastion_public_ip              = var.bastion_public_ip
   bastion_private_ip             = var.bastion_private_ip
   proxy_config                   = var.proxy_config
