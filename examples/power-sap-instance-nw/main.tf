@@ -37,7 +37,7 @@ module "netweaver" {
   bastion_private_ip             = var.bastion_private_ip
   proxy_config                   = var.proxy_config
   ssh_private_key                = var.ssh_private_key
-  os_activation                  = merge(var.os_activation,{"os_release" = "${element(local.os_release_list, length(local.os_release_list) - 2)}.${element(local.os_release_list, length(local.os_release_list) - 1)}"})
+  os_activation                  = var.os_activation
   sap_solution                   = "NETWEAVER"
   sap_domain                     = var.sap_domain
 }

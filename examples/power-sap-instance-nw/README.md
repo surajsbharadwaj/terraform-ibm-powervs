@@ -42,7 +42,7 @@ This example illustrates how to use the `power-sap-instance` module.
 | <a name="input_bastion_public_ip"></a> [bastion\_public\_ip](#input\_bastion\_public\_ip) | Public IP of Bastion/jumpserver Host | `string` | n/a | yes |
 | <a name="input_bastion_private_ip"></a> [bastion\_private\_ip](#input\_bastion\_private\_ip) | Private IP of Bastion/jumpserver Host | `string` | n/a | yes |
 | <a name="input_ssh_private_key"></a> [ssh\_private\_key](#input\_ssh\_private\_key) | Private Key to configure Instance, Will not be uploaded to server | `string` | n/a | yes |
-| <a name="input_os_activation"></a> [os\_activation](#input\_os\_activation) | Suse/RHEL activation username and password to register OS | `map` | <pre>{<br>  "activation_password": "",<br>  "activation_username": "",<br>  "required": false<br>}</pre> | optional |
+| <a name="input_os_activation"></a> [os\_activation](#input\_os\_activation) | Suse/RHEL activation username and password to register OS | `map` | <pre>{<br>"required": false,<br>  "activation_password": "",<br>  "activation_username": ""<br>}</pre> | optional |
 | <a name="input_sap_domain"></a> [sap\_domain](#input\_sap\_domain) | Domain name to be set. Required when deploying RHEL system. | `string` | n/a | yes |
 | <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | IBM Cloud Api Key | `string` | `null` | optional |
 
