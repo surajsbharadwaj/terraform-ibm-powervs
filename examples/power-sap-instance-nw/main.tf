@@ -9,10 +9,6 @@ provider "ibm" {
   ibmcloud_api_key = var.ibmcloud_api_key != null ? var.ibmcloud_api_key : null
 }
 
-locals {
-os_release_list = split("-",var.pvs_instance_image_name)
-}
-
 module "netweaver" {
   // source = "terraform-ibm-modules/powervs/ibm/modules/power-sap-instance"
   source = "../../modules/power-sap-instance"
