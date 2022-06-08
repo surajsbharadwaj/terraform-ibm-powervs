@@ -11,7 +11,7 @@ This module configures the PVS instance and prepares the system for SAP installa
 ```
 
 module "instance-sap-init-sles" {
-  source = "terraform-ibm-modules/powervs/ibm//modules/pvs-instance-sap-init-sles"
+  //source = "terraform-ibm-modules/powervs/ibm//modules/pvs-instance-sap-init-sles"
 
   bastion_public_ip            = var.bastion_public_ip
   host_private_ip              = var.host_private_ip
