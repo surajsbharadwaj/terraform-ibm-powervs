@@ -131,7 +131,7 @@ resource "null_resource" "install_packages" {
     
     ##### Install Ansible and git ####
     "if [ ${local.os_release_list[0]} == 12 ]; then zypper install -y python-pip; else zypper install -y python3-pip; fi",
-	"zypper install -y git",
+	"zypper install -y git-core",
     "pip install -q ansible ",
 
     ]

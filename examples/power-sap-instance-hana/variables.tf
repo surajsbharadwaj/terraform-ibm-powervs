@@ -84,7 +84,7 @@ variable "ssh_private_key" {
 }
 
 variable "os_activation" {
-  description = "Suse/RHEL activation username and password to register OS"
+  description = "SUSE/RHEL activation username and password to register OS"
   type        = map
   default     = {
                     required            = false

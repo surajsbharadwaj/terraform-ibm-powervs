@@ -114,7 +114,8 @@ variable "os_activation" {
 variable "sap_domain" {
   description = "Domain name to be set. Required when deploying RHEL system."
   type        = string
-}					   
+}
+				   
 #####################################################
 # Optional Parameters
 #####################################################

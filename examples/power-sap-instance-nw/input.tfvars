@@ -24,7 +24,7 @@ pvs_instance_storage_config    = {
                                    names      = "usrsap,usrtrans"
                                    disks_size = "50,60"
                                    counts     = "1,1"
-				   tiers      = "tier3,tier3"
+                                   tiers      = "tier3,tier3"
                                    paths      = "/usr/sap,/usr/sap/trans"
                                   }
 
@@ -66,7 +66,7 @@ pvs_instance_storage_config    = {
                                    names      = "usrsap,usrtrans"
                                    disks_size = "50,60"
                                    counts     = "1,1"
-				   tiers      = "tier3,tier3"
+                                   tiers      = "tier3,tier3"
                                    paths      = "/usr/sap,/usr/sap/trans"
                                   }
           
@@ -74,9 +74,9 @@ proxy_config                   = "SNAT"
 bastion_public_ip              = "52.99.102.56"
 bastion_private_ip             = "10.10.45.2"
 os_activation                  = {
-                                  required         = true
+                                  required            = true
                                   activation_username = "<email>"
-                                  activation_password  = "<activation code/password>"
+                                  activation_password = "<activation code/password>"
                                  }
 sap_domain                     = "" # required for RHEL image only
 

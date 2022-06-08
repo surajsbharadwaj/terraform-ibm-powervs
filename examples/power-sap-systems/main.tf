@@ -62,9 +62,9 @@ module "hana" {
   bastion_private_ip             = var.bastion_private_ip
   proxy_config                   = var.proxy_config
   ssh_private_key                = var.ssh_private_key
-  vpc_address_prefix             = var.vpc_address_prefix
-  suse_activation                = var.suse_activation
+  os_activation                  = var.os_activation
   sap_solution                   = "HANA"
+  sap_domain                     = var.sap_domain
 }
 
 module "netweaver" {
@@ -94,7 +94,7 @@ module "netweaver" {
   bastion_private_ip             = var.bastion_private_ip
   proxy_config                   = var.proxy_config
   ssh_private_key                = var.ssh_private_key
-  vpc_address_prefix             = var.vpc_address_prefix
-  suse_activation                = var.suse_activation
+  os_activation                  = var.os_activation
   sap_solution                   = "NETWEAVER"
+  sap_domain                     = var.sap_domain
 }

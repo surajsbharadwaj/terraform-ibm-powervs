@@ -67,9 +67,9 @@ proxy_config                   = "SNAT"
 bastion_public_ip              = "52.99.102.56"
 bastion_private_ip             = "10.10.45.2"
 os_activation                  = {
-                                  required         = true
+                                  required            = true
                                   activation_username = "<email>"
-                                  activation_password  = "<activation code/password>"
+                                  activation_password = "<activation code/password>"
                                  }
 sap_domain                     = "" # required for RHEL image only
 SSH_PRIVATE_KEY                = <<-EOF

@@ -14,7 +14,7 @@ pvs_resource_group_name           = "Default"
 brownfield                        = true
 pvs_service_name                  = "TestService"
 pvs_sshkey_name                   = "publish"
-pvs_instance_image_name           = "Linux-SUSE-SAP-12-4"
+pvs_instance_image_name           = "Linux-SUSE-SAP-15-3"
 pvs_instance_private_net_names    = [ "mgmt_net","bkp_net"]
 pvs_instance_sap_network          = { 
                                      "name"     = "sap_net"
@@ -48,12 +48,12 @@ pvs_nw_instance_storage_config    = {
 proxy_config                      = "SQUID"
 bastion_public_ip                 = "13.116.82.65"
 bastion_private_ip                = "172.20.0.4"
-vpc_addressprefix                 = "172.20.0.0/23"
-suse_activation                   = {
-                                      required         = true
-                                      activation_email = "<email>"
-                                      activation_code  = "<activation code>"
+os_activation                     = {
+                                      required            = true
+                                      activation_username = "<email>"
+                                      activation_code     = "<activation code>"
                                     }
+sap_domain                        = "" # required for RHEL image only
 SSH_PRIVATE_KEY                   = <<-EOF
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3Blsadsadsi5fjoepepe
@@ -72,7 +72,7 @@ pvs_resource_group_name           = "Default"
 brownfield                        = true
 pvs_service_name                  = "TestService"
 pvs_sshkey_name                   = "publish"
-pvs_instance_image_name           = "Linux-SUSE-SAP-12-4"
+pvs_instance_image_name           = "Linux-SUSE-SAP-15-3"
 pvs_instance_private_net_names    = [ "mgmt_net","bkp_net"]
 pvs_instance_sap_network          = { 
                                      "name"     = "sap_net"
@@ -107,12 +107,12 @@ pvs_nw_instance_storage_config    = {
 proxy_config                      = "SNAT"
 bastion_public_ip                 = "52.99.102.56"
 bastion_private_ip                = "10.10.45.2"
-vpc_addressprefix                 = "" ##optional
-suse_activation                   = {
-                                      required         = true
-                                      activation_email = "<email>"
-                                      activation_code  = "<activation code>"
-                                    }
+os_activation                  = {
+                                  required            = true
+                                  activation_username = "<email>"
+                                  activation_password = "<activation code/password>"
+                                 }
+sap_domain                     = "" # required for RHEL image only						  
 SSH_PRIVATE_KEY                   = <<-EOF
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3Blsadsadsi5fjoepepe

@@ -26,7 +26,7 @@ variable "pvs_sshkey_name" {
 variable "pvs_instance_image_name" {
   description = "Image Name for node"
   type        = string
-  default     = "Linux-SUSE-SAP-12-4"
+  default     = "Linux-SUSE-SAP-15-3"
 }
 
 variable "pvs_instance_private_net_names" {
@@ -63,11 +63,11 @@ variable "pvs_hana_instance_storage_config" {
   description = "DISKS To be created and attached to hana node.Comma separated values"
   type        = map
   default     = { 
-                  names  = "data,log,shared,usrsap"
+                  names      = "data,log,shared,usrsap"
                   disks_size = "180,200,300,50"
-                  counts = "8,8,1,1"
-                  tiers  = "tier1,tier1,tier3,tier3"
-                  paths  = "/hana/data,/hana/log,/hana/shared,/usr/sap"
+                  counts     = "8,8,1,1"
+                  tiers      = "tier1,tier1,tier3,tier3"
+                  paths      = "/hana/data,/hana/log,/hana/shared,/usr/sap"
                 }
 }
 
@@ -121,6 +121,7 @@ variable "pvs_nw_instance_storage_config" {
 variable "proxy_config" {
   description = "Value either SNAT or SQUID to use as proxy"
   type        = string
+  default     = "SQUID"
 }
 
 variable "bastion_public_ip" {
@@ -138,26 +139,19 @@ variable "ssh_private_key" {
   type        = string
 }
 
-variable "vpc_address_prefix" {
-  description = "Existing Address prefix of VPC to reach the HANA/NW node from machine on vpc"
-  type        = string
-  default     = ""
-}
-
-variable "suse_activation" {
-  description = "Suse activation email and code to register for suse"
+variable "os_activation" {
+  description = "SUSE/RHEL activation username and password to register OS"
   type        = map
   default     = {
-                    required         = false
-                    activation_email = ""
-                    activation_code  = ""
+                    required            = false
+                    activation_username = ""
+                    activation_password = ""
                 }
 }
 
-variable "sap_solution" {
-  description = "To Execute Playbooks for Hana or NetWeaver. Value can be either HANA OR NETWEAVER"
+variable "sap_domain" {
+  description = "Domain name to be set. Required when deploying RHEL system."
   type        = string
-  default     = "HANA"
 }
 
 #####################################################
