@@ -24,7 +24,7 @@ pvs_instance_storage_config    = {
                                    names      = "usrsap,usrtrans"
                                    disks_size = "50,60"
                                    counts     = "1,1"
-								   tiers      = "tier3,tier3"
+				   tiers      = "tier3,tier3"
                                    paths      = "/usr/sap,/usr/sap/trans"
                                   }
 
@@ -66,7 +66,7 @@ pvs_instance_storage_config    = {
                                    names      = "usrsap,usrtrans"
                                    disks_size = "50,60"
                                    counts     = "1,1"
-								   tiers      = "tier3,tier3"
+				   tiers      = "tier3,tier3"
                                    paths      = "/usr/sap,/usr/sap/trans"
                                   }
           
