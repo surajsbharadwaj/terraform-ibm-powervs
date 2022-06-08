@@ -55,7 +55,7 @@ module "instance-sap-init-sles" {
                                      vpc_bastion_private_ip = var.bastion_private_ip
                                      no_proxy_ips           = module.instance-sap.instance_private_ips
                                    }
-  os_activation                  = var.os_activation                                
+  os_activation                  = merge(var.os_activation,{"os_release" = "${element(local.os_release_list, length(local.os_release_list) - 2)}.${element(local.os_release_list, length(local.os_release_list) - 1)}"})                                
   pvs_instance_storage_config    = merge(var.pvs_instance_storage_config,{"wwns" = join(",", module.instance-sap.instance_wwns)})
   sap_solution                   = var.sap_solution
 }
