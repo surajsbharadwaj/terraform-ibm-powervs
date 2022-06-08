@@ -93,8 +93,9 @@ variable "pvs_instance_storage_config" {
 #####################################################
 
 variable "proxy_config" {
-  description = "Value either SNAT or SQUID to use as proxy"
+  description = "SQUID to use as proxy"
   type        = string
+  default     = "SQUID"
 }
 
 variable "bastion_public_ip" {

@@ -46,10 +46,6 @@ module "instance-sap-init-sles" {
   bastion_public_ip              = var.bastion_public_ip
   host_private_ip                = module.instance-sap.instance_mgmt_ip
   ssh_private_key                = var.ssh_private_key
-  pvs_bastion_snat_config        = { 
-                                     required               = var.proxy_config == "SNAT" ? true : false
-                                     pvs_bastion_private_ip = var.bastion_private_ip
-                                   }
   vpc_bastion_proxy_config       = {
                                      required               = var.proxy_config == "SQUID" ? true : false 
                                      vpc_bastion_private_ip = var.bastion_private_ip

@@ -6,6 +6,8 @@ This module configures the PVS instance and prepares the system for SAP installa
 - Install Packages
 - Run ansible galaxy roles to configure filesystems, prepare OS for HANA and netweaver installation
 
+Note: prerequisite The bastion host must be running SQUID proxy server with 3128 port open. If squid server is not on bastion host, then pass the squid server public and private ips to variables `input_bastion_public_ip` and `input_bastion_private_ip`
+
 ## Example Usage
 ```
 

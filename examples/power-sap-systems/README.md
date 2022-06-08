@@ -5,6 +5,8 @@ It creates empty SAP SYSTEM landscape:
 - 1 HANA instance on e980 PowerVS with specified volumes
 - N number of Netweaver instances on s922 PowerVS 
 
+Note: prerequisite The bastion host must be running SQUID proxy server with 3128 port open. If squid server is not on bastion host, then pass the squid server public and private ips to variables `input_bastion_public_ip` and `input_bastion_private_ip`
+
 This example illustrates how to use the `power-sap-instance` module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -59,7 +61,6 @@ This example illustrates how to use the `power-sap-instance` module.
 | <a name="input_pvs_nw_instance_processors"></a> [pvs\_nw\_instance\_processors](#input\_pvs\_nw\_instance\_processors) | Number of processors | `string` | `"4"` | yes |
 | <a name="input_pvs_nw_instance_memory"></a> [pvs\_nw\_instance\_memory](#input\_pvs\_nw\_instance\_memory) | Amount of memory | `string` | `"400"` | yes |
 | <a name="input_pvs_nw_instance_storage_config"></a> [pvs\_nw\_instance\_storage\_config](#input\_pvs\_nw\_instance\_storage\_config) | DISKS To be created and attached to nw nodes.Comma separated values | `map` | <pre>{<br>  "counts": "1,1",<br>  "disks_size": "50,60",<br>  "names": "usrsap,usrtrans",<br>  "paths": "/usr/sap,/usr/sap/trans",<br>  "tiers": "tier3,tier3"<br>}</pre> | optional |
-| <a name="input_proxy_config"></a> [proxy\_config](#input\_proxy\_config) | Value either SNAT or SQUID to use as proxy | `string` | `"SQUID"` | yes |
 | <a name="input_bastion_public_ip"></a> [bastion\_public\_ip](#input\_bastion\_public\_ip) | Public IP of Bastion/jumpserver Host | `string` | n/a | yes |
 | <a name="input_bastion_private_ip"></a> [bastion\_private\_ip](#input\_bastion\_private\_ip) | Private IP of Bastion/jumpserver Host | `string` | n/a | yes |
 | <a name="input_ssh_private_key"></a> [ssh\_private\_key](#input\_ssh\_private\_key) | Private Key to configure Instance, Will not be uploaded to server | `string` | n/a | yes |

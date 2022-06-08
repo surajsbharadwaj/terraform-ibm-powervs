@@ -31,7 +31,6 @@ module "netweaver" {
 
   bastion_public_ip              = var.bastion_public_ip
   bastion_private_ip             = var.bastion_private_ip
-  proxy_config                   = var.proxy_config
   ssh_private_key                = var.ssh_private_key
   os_activation                  = var.os_activation
   sap_solution                   = "NETWEAVER"

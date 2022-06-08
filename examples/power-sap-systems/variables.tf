@@ -118,12 +118,6 @@ variable "pvs_nw_instance_storage_config" {
 # Copyright 2022 IBM
 #####################################################
 
-variable "proxy_config" {
-  description = "Value either SNAT or SQUID to use as proxy"
-  type        = string
-  default     = "SQUID"
-}
-
 variable "bastion_public_ip" {
   description = "Public IP of Bastion/jumpserver Host"
   type        = string

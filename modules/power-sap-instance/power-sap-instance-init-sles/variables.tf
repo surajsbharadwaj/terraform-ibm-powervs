@@ -13,15 +13,6 @@ variable "ssh_private_key" {
   type        = string
 }
 
-variable "pvs_bastion_snat_config" {
-  description = "SNAT configuration if required on HANA/nw node to reach public internet via the Bastion host on Power Server"
-  type        = map
-  default     = {
-                    required = false
-                    pvs_bastion_private_ip = ""
-                }
-}
-
 variable "vpc_bastion_proxy_config" {
   description = "SQUID configuration if required on HANA/nw node to reach public internet via the Bastion host on VSI running SQUID server"
   type        = map
@@ -39,7 +30,7 @@ variable "os_activation" {
                     required            = false
                     activation_username = ""
                     activation_password = ""
-		    os_release          = "15.3"
+                    os_release          = "15.3"
                 }
 }
 

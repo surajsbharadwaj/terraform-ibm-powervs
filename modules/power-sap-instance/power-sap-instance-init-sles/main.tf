@@ -9,40 +9,6 @@ locals {
 }
 
 #####################################################
-# SNAT configuration
-# Copyright 2022 IBM
-#####################################################
-
-resource "null_resource" "configure_snat" {
-  count         = var.pvs_bastion_snat_config["required"] ? 1 : 0
-
-  connection {
-    type         = "ssh"
-    user         = "root"
-    bastion_host = var.bastion_public_ip
-    host         = var.host_private_ip
-    private_key  = local.private_key
-    agent        = false
-    timeout      = "15m"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-    
-    #### SNAT CLIENT CONFIG (eth0 has to be a management network) ####
-
-    "if [ -n '${var.pvs_bastion_snat_config["pvs_bastion_private_ip"]}' ]; then echo \"${var.pvs_bastion_snat_config["pvs_bastion_private_ip"]} $( ip route list | awk ' /^default/ {print $3}') - -\" >> /etc/sysconfig/network/ifroute-eth0; fi",
-    "grep -qxF \"NETCONFIG_DNS_STATIC_SERVERS=\"9.9.9.9\"\" /etc/sysconfig/network/config || sed -i '/^NETCONFIG_DNS_STATIC_SERVERS=/cNETCONFIG_DNS_STATIC_SERVERS=\"9.9.9.9\"' /etc/sysconfig/network/config",
-    "rm -rf /etc/resolv.conf",
-	
-	###### Restart Network #######
-    "/usr/bin/systemctl restart network ", 
-
-    ]
-  }
-}
-
-#####################################################
 # Forward Proxy squid configuration
 # Copyright 2022 IBM
 #####################################################
@@ -81,7 +47,7 @@ resource "null_resource" "configure_proxy" {
 
 resource "null_resource" "suse_register" {
   count         = var.os_activation["required"] ? 1 : 0
-  depends_on    = [null_resource.configure_proxy,null_resource.configure_snat]
+  depends_on    = [null_resource.configure_proxy]
 
   connection {
     type         = "ssh"
