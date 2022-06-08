@@ -39,7 +39,7 @@ variable "os_activation" {
                     required            = false
                     activation_username = ""
                     activation_password = ""
-					os_release          = "15.3"
+		    os_release          = "15.3"
                 }
 }
 
