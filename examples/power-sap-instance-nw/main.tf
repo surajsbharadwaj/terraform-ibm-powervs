@@ -9,6 +9,10 @@ provider "ibm" {
   ibmcloud_api_key = var.ibmcloud_api_key != null ? var.ibmcloud_api_key : null
 }
 
+locals {
+os_release_list = split("-",var.pvs_instance_image_name)
+}
+
 module "netweaver" {
   // source = "terraform-ibm-modules/powervs/ibm/modules/power-sap-instance"
   source = "../../modules/power-sap-instance"
@@ -26,14 +30,14 @@ module "netweaver" {
   pvs_instance_memory            = var.pvs_instance_memory
   pvs_instance_private_net_names = var.pvs_instance_private_net_names
   pvs_instance_storage_config    = var.pvs_instance_storage_config
-  
+
   ####OS Initialization Variables
 
   bastion_public_ip              = var.bastion_public_ip
   bastion_private_ip             = var.bastion_private_ip
   proxy_config                   = var.proxy_config
   ssh_private_key                = var.ssh_private_key
-  vpc_address_prefix             = var.vpc_address_prefix
-  suse_activation                = var.suse_activation
+  os_activation                  = merge(var.os_activation,{"os_release" = "${element(local.os_release_list, length(local.os_release_list) - 2)}.${element(local.os_release_list, length(local.os_release_list) - 1)}"})
   sap_solution                   = "NETWEAVER"
+  sap_domain                     = var.sap_domain
 }

@@ -32,7 +32,7 @@ variable "pvs_sshkey_name" {
 variable "pvs_instance_image_name" {
   description = "Image Name for node"
   type        = string
-  default     = "Linux-SUSE-SAP-12-4"
+  default     = "Linux-SUSE-SAP-15-3"
 }
 
 variable "pvs_instance_sys_type" {
@@ -101,22 +101,20 @@ variable "ssh_private_key" {
   type        = string
 }
 
-variable "vpc_address_prefix" {
-  description = "Existing Address prefix of VPC to reach the HANA/NW node from machine on vpc"
-  type        = string
-  default     = ""
-}
-
-variable "suse_activation" {
-  description = "Suse activation email and code to register for suse"
+variable "os_activation" {
+  description = "Suse/RHEL activation username and password to register OS"
   type        = map
   default     = {
-                    required         = false
-                    activation_email = ""
-                    activation_code  = ""
+                    required            = false
+                    activation_username = ""
+                    activation_password = ""
                 }
 }
 
+variable "sap_domain" {
+  description = "Domain name to be set. Required when deploying RHEL system."
+  type        = string
+}					   
 #####################################################
 # Optional Parameters
 #####################################################

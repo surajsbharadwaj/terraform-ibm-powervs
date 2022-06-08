@@ -18,7 +18,7 @@ data "ibm_resource_instance" "pvs_service_ds" {
   resource_group_id    = data.ibm_resource_group.resource_group_ds.id
 }
 
-data "ibm_pi_images" "exisiting_images_ds" {
+data "ibm_pi_images" "existing_images_ds" {
   pi_cloud_instance_id = data.ibm_resource_instance.pvs_service_ds.guid
 }
 
@@ -28,7 +28,7 @@ data "ibm_pi_catalog_images" "catalog_images_ds" {
 }
 
 locals {
-  image = [for x in data.ibm_pi_images.exisiting_images_ds.image_info : x if x.name == var.pvs_image_name]
+  image = [for x in data.ibm_pi_images.existing_images_ds.image_info : x if x.name == var.pvs_image_name]
   catalog_image = [for stock_image in data.ibm_pi_catalog_images.catalog_images_ds.images : stock_image if stock_image.name == var.pvs_image_name]
 }
 

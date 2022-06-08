@@ -24,12 +24,13 @@ variable "vpc_bastion_proxy_config" {
 }
 
 variable "os_activation" {
-  description = "RHEL activation email and code to register OS"
+  description = "RHEL activation username, password and Os release to register Os. Release value should be in for x.x. For example RHEL 8.4, value would be 8.4"
   type        = map
   default     = {
-                    required         = false
-                    activation_email = ""
-                    activation_code  = ""
+                    required            = false
+                    activation_username = ""
+                    activation_password = ""
+					os_release          = "8.4"
                 }
 }
 

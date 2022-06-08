@@ -4,12 +4,12 @@ variable "bastion_public_ip" {
 }
 
 variable "host_private_ip" {
-  description = "Private IP of Netweaver/HANA Host reachable from bastion"
+  description = "Private IP of NetWeaver/HANA Host reachable from bastion"
   type        = string
 }
 
 variable "ssh_private_key" {
-  description = "Private Key to confgure Instance, Will not be uploaded to server" 
+  description = "Private Key to configure Instance, Will not be uploaded to server" 
   type        = string
 }
 
@@ -33,12 +33,13 @@ variable "vpc_bastion_proxy_config" {
 }
 
 variable "os_activation" {
-  description = "Suse activation email and code to register Os"
+  description = "SuSe activation username, password and Os release to register Os. Release value should be in for x.x. For example SLES15 SP3, value would be 15.3"
   type        = map
   default     = {
                     required            = false
                     activation_username = ""
                     activation_password = ""
+					os_release          = "15.3"
                 }
 }
 
@@ -55,6 +56,6 @@ variable "pvs_instance_storage_config" {
 }
 
 variable "sap_solution" {
-  description = "To Execute Playbooks for Hana or Netweaver. Value can be either HANA OR NETWEAVER"
+  description = "To Execute Playbooks for Hana or NetWeaver. Value can be either HANA OR NETWEAVER"
   type        = string
 }

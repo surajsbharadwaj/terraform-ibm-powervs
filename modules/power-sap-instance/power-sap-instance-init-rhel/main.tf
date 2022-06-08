@@ -5,6 +5,7 @@
 
 locals {
   private_key = var.ssh_private_key
+  os_release_list = split(".",var.os_activation.os_release)
 }
 
 #####################################################
@@ -65,8 +66,8 @@ resource "null_resource" "rhel_register" {
     
     ##### Register RHEL #####
     "subscription-manager register --username ${var.os_activation["activation_username"]} --password ${var.os_activation["activation_password"]} --auto-attach --force",
-    "subscription-manager release  --set=8.4",
-    "subscription-manager repos --enable=rhel-8-for-ppc64le-baseos-e4s-rpms --enable=rhel-8-for-ppc64le-appstream-e4s-rpms --enable=rhel-8-for-ppc64le-sap-solutions-e4s-rpms --enable=rhel-8-for-ppc64le-sap-netweaver-e4s-rpms" 
+    "subscription-manager release  --set=${local.os_release_list[0]}.${local.os_release_list[1]}",
+    "subscription-manager repos --enable=rhel-${local.os_release_list[0]}-for-ppc64le-baseos-e4s-rpms --enable=rhel-${local.os_release_list[0]}-for-ppc64le-appstream-e4s-rpms --enable=rhel-${local.os_release_list[0]}-for-ppc64le-sap-solutions-e4s-rpms --enable=rhel-${local.os_release_list[0]}-for-ppc64le-sap-netweaver-e4s-rpms" 
 
     ]
   }
@@ -145,11 +146,11 @@ EOF
     inline = [
 
     ####  Execute ansible roles: prepare_rhel_sap, fs_creation and swap_creation  ####
-
+    "rm -rf /usr/share/ansible/roles/*",
     "ansible-galaxy collection install sahityajain123.ansible_powervs_linux_sap",
-	"ansible-galaxy install -r ~/.ansible/roles/sahityajain123.power_linux_sap_prepare/requirements.yml --force",
+	"ansible-galaxy collection install community.sap_install",
     "unbuffer ansible-playbook --connection=local -i 'localhost,' ~/.ansible/collections/ansible_collections/sahityajain123/ansible_powervs_linux_sap/playbooks/files/playbook-rhel.yml --extra-vars '@/root/terraform_vars.yml' 2>&1 | tee ansible_execution.log ",
     ]
   }
 
-} 
+}

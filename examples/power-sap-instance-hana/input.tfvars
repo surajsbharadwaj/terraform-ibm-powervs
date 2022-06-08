@@ -1,5 +1,5 @@
 #####################################################
-# Powervs instance module Example For HANA
+# Powervs instance module Example For HANA : RHEL/SLES
 # Copyright 2022 IBM
 #####################################################
 

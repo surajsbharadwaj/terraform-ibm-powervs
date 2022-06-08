@@ -5,6 +5,7 @@
 
 locals {
   private_key = var.ssh_private_key
+  os_release_list = split(".",var.os_activation.os_release)
 }
 
 #####################################################
@@ -32,7 +33,9 @@ resource "null_resource" "configure_snat" {
 
     "if [ -n '${var.pvs_bastion_snat_config["pvs_bastion_private_ip"]}' ]; then echo \"${var.pvs_bastion_snat_config["pvs_bastion_private_ip"]} $( ip route list | awk ' /^default/ {print $3}') - -\" >> /etc/sysconfig/network/ifroute-eth0; fi",
     "grep -qxF \"NETCONFIG_DNS_STATIC_SERVERS=\"9.9.9.9\"\" /etc/sysconfig/network/config || sed -i '/^NETCONFIG_DNS_STATIC_SERVERS=/cNETCONFIG_DNS_STATIC_SERVERS=\"9.9.9.9\"' /etc/sysconfig/network/config",
-    "rm -rf /etc/resolv.conf",    
+    "rm -rf /etc/resolv.conf",
+	
+	###### Restart Network #######
     "/usr/bin/systemctl restart network ", 
 
     ]
@@ -64,8 +67,9 @@ resource "null_resource" "configure_proxy" {
 
     "echo -e \"export http_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport https_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport HTTP_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport HTTPS_proxy=http://${var.vpc_bastion_proxy_config["vpc_bastion_private_ip"]}:3128\nexport no_proxy='${var.vpc_bastion_proxy_config["no_proxy_ips"]}'\nexport NO_PROXY='${var.vpc_bastion_proxy_config["no_proxy_ips"]}'\" >> /etc/bash.bashrc",
 	
+	###### Restart Network #######
+	
     "/usr/bin/systemctl restart network ", 
-
     ]
   }
 }
@@ -92,12 +96,13 @@ resource "null_resource" "suse_register" {
   provisioner "remote-exec" {
     inline = [
     
-    ##### Register SUSE and PACKAGES INSTALLATON #####
+    ##### Register SUSE #####
     "mv /etc/SUSEConnect /etc/SUSEConnect.bkpp 2>/dev/null || :",
     "SUSEConnect -d &> /dev/null || true :",
     "SUSEConnect --cleanup",
     "SUSEConnect -r ${var.os_activation["activation_password"]} -e ${var.os_activation["activation_username"]}",
-    #"SUSEConnect -p sle-module-public-cloud/12/ppc64le",
+    "if [ ${local.os_release_list[0]} == 12 ]; then SUSEConnect -p sle-module-public-cloud/${local.os_release_list[0]}/ppc64le; fi"
+
 
     ]
   }
@@ -124,9 +129,9 @@ resource "null_resource" "install_packages" {
   provisioner "remote-exec" {
     inline = [
     
-    ##### Install Ansible #####
-	
-    "zypper install -y python-pip",
+    ##### Install Ansible and git ####
+    "if [ ${local.os_release_list[0]} == 12 ]; then zypper install -y python-pip; else zypper install -y python3-pip; fi",
+	"zypper install -y git",
     "pip install -q ansible ",
 
     ]
@@ -135,7 +140,7 @@ resource "null_resource" "install_packages" {
 
 
 #####################################################
-# Execute ANsbile galaxy role to prepare the system 
+# Execute Ansible galaxy role to prepare the system 
 # for SAP installation
 # Copyright 2022 IBM
 #####################################################
@@ -165,7 +170,6 @@ resource "null_resource" "execute_ansible_role" {
 disks_configuration : ${jsonencode(local.disks_config)}
 sap_solution : '${var.sap_solution}'
 terraform_wrapper : True
-host_ip: '${var.host_private_ip}'
 EOF
 
    destination = "terraform_vars.yml"
