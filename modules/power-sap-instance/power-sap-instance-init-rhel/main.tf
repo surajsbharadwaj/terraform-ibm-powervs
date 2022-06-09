@@ -148,7 +148,7 @@ EOF
     ####  Execute ansible roles: prepare_rhel_sap, fs_creation and swap_creation  ####
     "rm -rf /usr/share/ansible/roles/*",
     "ansible-galaxy collection install sahityajain123.ansible_powervs_linux_sap",
-	"ansible-galaxy collection install community.sap_install",
+    "ansible-galaxy collection install community.sap_install",
     "unbuffer ansible-playbook --connection=local -i 'localhost,' ~/.ansible/collections/ansible_collections/sahityajain123/ansible_powervs_linux_sap/playbooks/files/playbook-rhel.yml --extra-vars '@/root/terraform_vars.yml' 2>&1 | tee ansible_execution.log ",
     ]
   }
