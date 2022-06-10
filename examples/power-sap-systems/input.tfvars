@@ -11,7 +11,6 @@ ibmcloud_api_key                  = "_3R"
 pvs_region                        = "sao"
 pvs_zone                          = "sao01"
 pvs_resource_group_name           = "Default"
-brownfield                        = true
 pvs_service_name                  = "TestService"
 pvs_sshkey_name                   = "publish"
 pvs_instance_image_name           = "Linux-SUSE-SAP-15-3"
