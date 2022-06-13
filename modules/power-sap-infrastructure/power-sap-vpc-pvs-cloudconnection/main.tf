@@ -96,8 +96,16 @@ data "ibm_pi_cloud_connection" "cloud_connection_ds" {
 }
 
 resource "ibm_pi_cloud_connection_network_attach" "pvs_subnet_attach" {
-  count                  = var.cloud_connection_reuse ? length(var.pvs_subnet_names) : 0
+  count                  = var.cloud_connection_reuse ? 1 : 0
   pi_cloud_instance_id   = data.ibm_resource_instance.pvs_service_ds.guid
   pi_cloud_connection_id = data.ibm_pi_cloud_connection.cloud_connection_ds.0.id
-  pi_network_id          = data.ibm_pi_network.pvs_subnets_ds[count.index].id
+  pi_network_id          = data.ibm_pi_network.pvs_subnets_ds[0].id
+}
+
+resource "ibm_pi_cloud_connection_network_attach" "pvs_subnet_attach2" {
+  count                  = var.cloud_connection_reuse ? 1 : 0
+  depends_on             = [ibm_pi_cloud_connection_network_attach.pvs_subnet_attach]
+  pi_cloud_instance_id   = data.ibm_resource_instance.pvs_service_ds.guid
+  pi_cloud_connection_id = data.ibm_pi_cloud_connection.cloud_connection_ds.0.id
+  pi_network_id          = data.ibm_pi_network.pvs_subnets_ds[1].id
 }
