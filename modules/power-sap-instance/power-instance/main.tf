@@ -120,12 +120,14 @@ resource "ibm_pi_volume_attach" "instance_volumes_attach"{
 }
 
 data "ibm_pi_instance_ip" "instance_mgmt_ip_ds" {
+  depends_on           = [ibm_pi_instance.sap_instance]
   pi_network_name      = var.pvs_instance_private_net_names[0]
   pi_instance_name     = ibm_pi_instance.sap_instance.pi_instance_name
   pi_cloud_instance_id = data.ibm_resource_instance.pvs_service_ds.guid
 }
 
 data "ibm_pi_instance" "instance_ips_ds" {
+  depends_on           = [ibm_pi_instance.sap_instance]
   pi_instance_name     = ibm_pi_instance.sap_instance.pi_instance_name
   pi_cloud_instance_id = data.ibm_resource_instance.pvs_service_ds.guid
 }
