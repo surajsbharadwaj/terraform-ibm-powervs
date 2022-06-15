@@ -61,7 +61,7 @@ module "power-sap-infrastructure" {
 | <a name="input_pvs_service_name"></a> [pvs\_service\_name](#input\_pvs\_service\_name) | Name of PowerVS service which will be created | `string` | n/a | yes |
 | <a name="input_pvs_sshkey_name"></a> [pvs\_sshkey\_name](#input\_pvs\_sshkey\_name) | Name of PowerVS SSH Key which will be created | `string` | n/a | yes |
 | <a name="input_pvs_public_key"></a> [pvs\_public\_key](#input\_pvs\_public\_key) | PowerVS SSH Public key data | `string` | n/a | yes |
-| <a name="input_pvs_image_names"></a> [pvs\_image\_names](#input\_pvs\_image\_names) | List of Images to be imported into cloud account from catalog images | `list(string)` | <pre>[<br>  "Linux-SUSE-SAP-12-4",<br>  "Linux-RHEL-SAP-8-1"<br>]</pre> | optional |
+| <a name="input_pvs_image_names"></a> [pvs\_image\_names](#input\_pvs\_image\_names) | List of Images to be imported into cloud account from catalog images | `list(string)` | <pre>[<br>  "Linux-SUSE-SAP-15-3",<br>  "Linux-RHEL-SAP-8-4"<br>]</pre> | optional |
 | <a name="input_pvs_public_network_name"></a> [pvs\_public\_network\_name](#input\_pvs\_public\_network\_name) | Name of PowerVS Public Network which will be created | `string` | `"public_net"` | optional |
 | <a name="input_pvs_management_network"></a> [pvs\_management\_network](#input\_pvs\_management\_network) | PowerVS Management Subnet name and cidr which will be created. | `map` | n/a | yes |
 | <a name="input_pvs_backup_network"></a> [pvs\_backup\_network](#input\_pvs\_backup\_network) | PowerVS Backup Network name and cidr which will be created. | `map` | n/a | yes |
