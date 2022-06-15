@@ -4,7 +4,7 @@
 #####################################################
 
 provider "ibm" {
-  region    =   var.pvs_region
+  region    =   lookup(var.ibm_pvs_zone_region_map,var.pvs_zone, null)
   zone      =   var.pvs_zone
   ibmcloud_api_key = var.ibmcloud_api_key != null ? var.ibmcloud_api_key : null
 }
@@ -27,7 +27,6 @@ module "pvs" {
   cloud_connection_name       = var.cloud_connection_name
   cloud_connection_count      = var.cloud_connection_count
   cloud_connection_speed      = var.cloud_connection_speed
-  cloud_connection_vpc_enable = var.cloud_connection_vpc_enable
   ibmcloud_api_key            = var.ibmcloud_api_key
   vpc_region                  = var.vpc_region
   vpc_names                   = var.vpc_names

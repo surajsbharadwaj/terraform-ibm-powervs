@@ -78,21 +78,15 @@ variable "pvs_tags" {
 }
 
 variable "vpc_region" {
-  description = "IBM Cloud VPC Region. Required if cloud_connection_vpc_enable is true"
+  description = "IBM Cloud VPC Region."
   type        = string
   default     = null
 }
 
-variable "cloud_connection_vpc_enable" {
-  description = "Enable VPC for this cloud connection. Required when creating new connection"
-  type        = bool
-  default     = false
-}
-
 variable "vpc_names" {
-  description = "Existing VPC Names which has to be attached to Cloud connection. Required when creating new connection and cloud_connection_vpc_enable is true "
+  description = "Existing VPC Names which has to be attached to Cloud connection. Required when creating new connection"
   type        = list
-  default     = null
+  default     = []
 }
 
 variable "cloud_connection_gr" {

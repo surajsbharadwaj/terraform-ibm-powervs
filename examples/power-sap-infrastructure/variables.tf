@@ -1,8 +1,3 @@
-variable "pvs_region" {
-  description = "IBM Cloud Region"
-  type        = string
-}
-
 variable "pvs_zone" {
   description = "IBM Cloud Zone"
   type        = string
@@ -83,21 +78,15 @@ variable "pvs_tags" {
 }
 
 variable "vpc_region" {
-  description = "IBM Cloud VPC Region. Required if cloud_connection_vpc_enable is true"
+  description = "IBM Cloud VPC Region. Required when creating new connection"
   type        = string
   default     = null
 }
 
-variable "cloud_connection_vpc_enable" {
-  description = "Enable VPC for this cloud connection. Required when creating new connection"
-  type        = bool
-  default     = false
-}
-
 variable "vpc_names" {
-  description = "Existing VPC Names which has to be attached to Cloud connection. Required when creating new connection and cloud_connection_vpc_enable is true "
+  description = "Existing VPC Names which has to be attached to Cloud connection. Required when creating new connection "
   type        = list
-  default     = null
+  default     = []
 }
 
 variable "cloud_connection_gr" {
@@ -116,4 +105,24 @@ variable "ibmcloud_api_key" {
   description = "IBM Cloud Api Key"
   type        = string
   default     = null
+}
+
+variable "ibm_pvs_zone_region_map" {
+  description = "Map of IBM Power VS zone to the region of PowerVS Infrastructure"
+  type        = map
+  default     = {    
+                  syd04    = "syd"
+                  syd05    = "syd" 
+                  eu-de-1  = "eu-de"
+                  eu-de-2  = "eu-de"
+                  lon04    = "eu-gb"
+                  lon06    = "eu-gb"
+                  tok04    = "jp-tok" 
+                  us-east  = "us-east"
+                  us-south = "us-south"
+                  dal12    = "us-south"
+                  tor01    = "tor"
+                  osa21    = "osa"
+                  sao01    = "sao"
+        }
 }

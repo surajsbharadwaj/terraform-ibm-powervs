@@ -21,7 +21,6 @@ module "cloud-connection" {
   cloud_connection_speed      = var.cloud_connection_speed
   pvs_subnet_names            = var.pvs_subnet_names
   ibmcloud_api_key            = var.ibmcloud_api_key
-  cloud_connection_vpc_enable = var.cloud_connection_vpc_enable
   vpc_region                  = var.vpc_region
   vpc_crns                    = var.vpc_crns
   cloud_connection_gr         = var.cloud_connection_gr
@@ -57,9 +56,8 @@ module "cloud-connection" {
 | <a name="input_cloud_connection_count"></a> [cloud\_connection\_count](#input\_cloud\_connection\_count) | Required number of Cloud connections. Ignore when Reusing. Maximum is 2 per location | `string` | `2` | optional |
 | <a name="input_cloud_connection_speed"></a> [cloud\_connection\_speed](#input\_cloud\_connection\_speed) | Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000. Required when creating new connection | `string` | `null` | yes |
 | <a name="input_pvs_subnet_names"></a> [pvs\_subnet\_names](#input\_pvs\_subnet\_names) | List of PowerVs subnet names to be attached to Cloud connection | `list` | n/a | yes |
-| <a name="input_vpc_region"></a> [vpc\_region](#input\_vpc\_region) | IBM Cloud VPC Region. Required if cloud\_connection\_vpc\_enable is true | `string` | `null` | optional |
-| <a name="input_cloud_connection_vpc_enable"></a> [cloud\_connection\_vpc\_enable](#input\_cloud\_connection\_vpc\_enable) | Enable VPC for this cloud connection. Required when creating new connection | `bool` | `false` | optional |
-| <a name="input_vpc_crns"></a> [vpc\_crns](#input\_vpc\_crns) | Existing VPC Crns which has to be attached to Cloud connection. Required if cloud\_connection\_vpc\_enable is true | `list` | `null` | optional |
+| <a name="input_vpc_region"></a> [vpc\_region](#input\_vpc\_region) | IBM Cloud VPC Region.| `string` | `null` | optional |
+| <a name="input_vpc_crns"></a> [vpc\_crns](#input\_vpc\_crns) | Existing VPC Crns which has to be attached to Cloud connection. | `list` | `null` | optional |
 | <a name="input_cloud_connection_gr"></a> [cloud\_connection\_gr](#input\_cloud\_connection\_gr) | Enable global routing for this cloud connection.Can be specified when creating new connection | `bool` | `null` | optional |
 | <a name="input_cloud_connection_metered"></a> [cloud\_connection\_metered](#input\_cloud\_connection\_metered) | Enable metered for this cloud connection. Can be specified when creating new connection | `bool` | `null` | optional |
 | <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | IBM Cloud Api Key | `string` | `null` | optional |

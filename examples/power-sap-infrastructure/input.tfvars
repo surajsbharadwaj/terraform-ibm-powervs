@@ -7,7 +7,6 @@
 Example 1 usage with new cloud connection:
 
 ibmcloud_api_key        = "_3asd"
-pvs_region              = "sao"
 pvs_zone                = "sao01"
 pvs_resource_group_name = "Default"
 pvs_service_name        = "TestService"
@@ -27,10 +26,9 @@ pvs_tags     = ["T1","T2"]
 cloud_connection_reuse      = false
 cloud_connection_count      = "1" ### 1 or 2 depending on availability in DC. Per DC max count is 2
 cloud_connection_name       = "test2-auto"
-cloud_connection_speed      = "5000"  ### mandatory
-cloud_connection_vpc_enable = true #optional
-vpc_region                  = "br-sao" # optional
-vpc_names                   = ["test-automation-sao2"] # optional
+cloud_connection_speed      = "10000"  ### mandatory
+vpc_region                  = "br-sao" # mandatory
+vpc_names                   = ["test-automation-sao2"] # mandatory
 cloud_connection_gr         = true # optional
 cloud_connection_metered    = false # optional
 
@@ -40,7 +38,6 @@ cloud_connection_metered    = false # optional
 Example 2 usage reusing cloud connection:
 
 ibmcloud_api_key        = "_3asd"
-pvs_region              = "sao"
 pvs_zone                = "sao01"
 pvs_resource_group_name = "Default"
 pvs_service_name        = "TestService"

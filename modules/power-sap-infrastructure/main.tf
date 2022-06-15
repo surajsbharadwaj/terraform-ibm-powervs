@@ -25,7 +25,7 @@ provider "ibm" {
 }
 
 data "ibm_is_vpc" "vpc_crn_ds" {
-  count    = var.cloud_connection_vpc_enable ? length(var.vpc_names) : 0
+  count    = length(var.vpc_names) >= 1 ? length(var.vpc_names) : 0
   provider = ibm.dlcvpc 
   name     = var.vpc_names[count.index]
 }
@@ -42,10 +42,9 @@ module "cloud-connection" {
   cloud_connection_count      = var.cloud_connection_count
   cloud_connection_speed      = var.cloud_connection_speed
   pvs_subnet_names            = [var.pvs_management_network.name,var.pvs_backup_network.name]
-  cloud_connection_vpc_enable = var.cloud_connection_vpc_enable
   ibmcloud_api_key            = var.ibmcloud_api_key
   vpc_region                  = var.vpc_region
-  vpc_crns                    = var.cloud_connection_vpc_enable ? data.ibm_is_vpc.vpc_crn_ds.*.crn : null
+  vpc_crns                    = length(var.vpc_names) >= 1 ? data.ibm_is_vpc.vpc_crn_ds.*.crn : null
   cloud_connection_gr         = var.cloud_connection_gr
   cloud_connection_metered    = var.cloud_connection_metered
   

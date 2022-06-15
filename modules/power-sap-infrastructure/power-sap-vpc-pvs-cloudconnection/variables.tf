@@ -46,16 +46,10 @@ variable "vpc_region" {
   default     = null
 }
 
-variable "cloud_connection_vpc_enable" {
-  description = "Enable VPC for this cloud connection. Required when creating new connection"
-  type        = bool
-  default     = false
-}
-
 variable "vpc_crns" {
-  description = "Existing VPC Crns which has to be attached to Cloud connection. Required if cloud_connection_vpc_enable is true"
+  description = "Existing VPC Crns which has to be attached to Cloud connection"
   type        = list
-  default     = null
+  default     = []
 }
 
 variable "cloud_connection_gr" {
