@@ -20,7 +20,6 @@ module "pvs" {
   pvs_sshkey_name             = var.pvs_sshkey_name
   pvs_public_key              = var.pvs_public_key
   pvs_image_names             = var.pvs_image_names
-  pvs_public_network_name     = var.pvs_public_network_name
   pvs_management_network      = var.pvs_management_network
   pvs_backup_network          = var.pvs_backup_network
   cloud_connection_reuse      = var.cloud_connection_reuse

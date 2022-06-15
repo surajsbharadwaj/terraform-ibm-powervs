@@ -1,6 +1,6 @@
 # Module power-sap-service
 
-This module is used to create a PowerVS service, SSH Key, import images, Public network and 2 private networks for management network and backup network
+This module is used to create a PowerVS service, SSH Key, import images and 2 private networks for management network and backup network
 
 ## Example Usage
 ```
@@ -20,7 +20,6 @@ module "pvs" {
   pvs_sshkey_name           = var.pvs_sshkey_name
   pvs_public_key            = var.pvs_public_key
   pvs_image_names           = var.pvs_image_names
-  pvs_public_network_name   = var.pvs_public_network_name
   pvs_management_network    = var.pvs_management_network
   pvs_backup_network        = var.pvs_backup_network
 }
@@ -36,7 +35,6 @@ module "pvs" {
 | [ibm_pi_key.ssh_key](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/pi_key) | resource |
 | [ibm_pi_network.backup_network](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/pi_network) | resource |
 | [ibm_pi_network.management_network](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/pi_network) | resource |
-| [ibm_pi_network.public_network](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/pi_network) | resource |
 | [ibm_resource_instance.pvs_service](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/resources/resource_instance) | resource |
 | [ibm_pi_catalog_images.catalog_images_ds](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/data-sources/pi_catalog_images) | data source |
 | [ibm_resource_group.resource_group_ds](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs/data-sources/resource_group) | data source |
@@ -51,7 +49,6 @@ module "pvs" {
 | <a name="input_pvs_sshkey_name"></a> [pvs\_sshkey\_name](#input\_pvs\_sshkey\_name) | Name of PowerVS SSH Key which will be created | `string` | n/a | yes |
 | <a name="input_pvs_public_key"></a> [pvs\_public\_key](#input\_pvs\_public\_key) | PowerVS SSH Public key data | `string` | n/a | yes |
 | <a name="input_pvs_image_names"></a> [pvs\_image\_names](#input\_pvs\_image\_names) | List of Images to be imported into cloud account from catalog images | `list(string)` | <pre>[<br>  "Linux-SUSE-SAP-12-4",<br>  "Linux-RHEL-SAP-8-1"<br>]</pre> | optional |
-| <a name="input_pvs_public_network_name"></a> [pvs\_public\_network\_name](#input\_pvs\_public\_network\_name) | Name of PowerVS Public Network which will be created | `string` | `"public_net"` | optional |
 | <a name="input_pvs_management_network"></a> [pvs\_management\_network](#input\_pvs\_management\_network) | PowerVS Management Subnet name and cidr which will be created. | `map` | n/a | yes |
 | <a name="input_pvs_backup_network"></a> [pvs\_backup\_network](#input\_pvs\_backup\_network) | PowerVS Backup Network name and cidr which will be created. | `map` | n/a | yes |
 | <a name="input_pvs_tags"></a> [pvs\_tags](#input\_pvs\_tags) | List of Tag names for PowerVS service | `list(string)` | `null` | optional |

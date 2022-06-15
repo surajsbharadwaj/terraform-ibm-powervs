@@ -29,12 +29,6 @@ variable "pvs_image_names" {
   default     = ["Linux-SUSE-SAP-15-3","Linux-RHEL-SAP-8-4"]
 }
 
-variable "pvs_public_network_name" {
-  description = "Name of PowerVS Public Network which will be created"
-  type        = string
-  default     = "public_net"
-}
-
 variable "pvs_management_network" {
   description = "PowerVS Management Subnet name and cidr which will be created."
   type        = map

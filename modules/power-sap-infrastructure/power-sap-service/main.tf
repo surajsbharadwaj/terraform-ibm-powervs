@@ -64,15 +64,7 @@ resource "ibm_pi_image" "import_images" {
 # Copyright 2022 IBM
 #####################################################
 
-resource "ibm_pi_network" "public_network" {
-  pi_cloud_instance_id = ibm_resource_instance.pvs_service.guid
-  pi_network_name      = var.pvs_public_network_name
-  pi_dns               = ["9.9.9.9"]
-  pi_network_type      = "pub-vlan"
-}
-
 resource "ibm_pi_network" "management_network" {
-  depends_on           = [ibm_pi_network.public_network]
   pi_cloud_instance_id = ibm_resource_instance.pvs_service.guid
   pi_network_name      = var.pvs_management_network["name"]
   pi_cidr              = var.pvs_management_network["cidr"]
