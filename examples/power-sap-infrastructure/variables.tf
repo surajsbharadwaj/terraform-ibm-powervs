@@ -8,6 +8,11 @@ variable "pvs_resource_group_name" {
   type        = string
 }
 
+variable "prefix" {
+  description = "Prefix for resources which will be created."
+  type        = string
+}
+
 variable "pvs_service_name" {
   description = "Name of PowerVS service which will be created"
   type        = string
