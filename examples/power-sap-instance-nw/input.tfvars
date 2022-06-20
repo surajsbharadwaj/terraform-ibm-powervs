@@ -8,7 +8,6 @@
 Example Usage :
 
 ibmcloud_api_key               = "_3R"
-pvs_region                     = "sao"
 pvs_zone                       = "sao01"
 pvs_resource_group_name        = "Default"
 pvs_service_name               = "TestService"

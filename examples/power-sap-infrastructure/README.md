@@ -29,7 +29,7 @@ This example illustrates how to use the `power-sap-infrastructure` module.
 
 | Name                              | Description                                           | Type   | Default | Required |
 |-----------------------------------|-------------------------------------------------------|--------|---------|----------|
-| <a name="input_pvs_zone"></a> [pvs\_zone](#input\_pvs\_zone) | IBM Cloud Zone. Valid values: sao01,osa21,tor01,us-south,dal12,us-east,tok04,lon04, lon06,eu-de-1, eu-de-2,syd04, syd05 | `string` | n/a | yes |
+| <a name="input_pvs_zone"></a> [pvs\_zone](#input\_pvs\_zone) | IBM Cloud Zone. Valid values: sao01,osa21,tor01,us-south,dal12,us-east,tok04,lon04,lon06,eu-de-1,eu-de-2,syd04,syd05 | `string` | n/a | yes |
 | <a name="input_pvs_resource_group_name"></a> [pvs\_resource\_group\_name](#input\_pvs\_resource\_group\_name) | Existing Resource Group Name | `string` | n/a | yes |
 | <a name="prefix"></a> [prefix](#prefix) | Prefix for resources which will be created | `string` | n/a | yes |
 | <a name="input_pvs_service_name"></a> [pvs\_service\_name](#input\_pvs\_service\_name) | Name of PowerVS service which will be created | `string` | n/a | yes |

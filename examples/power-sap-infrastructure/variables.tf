@@ -1,5 +1,5 @@
 variable "pvs_zone" {
-  description = "IBM Cloud Zone"
+  description = "IBM Cloud PVS Zone. Valid values: sao01,osa21,tor01,us-south,dal12,us-east,tok04,lon04,lon06,eu-de-1,eu-de-2,syd04,syd05"
   type        = string
 }
 

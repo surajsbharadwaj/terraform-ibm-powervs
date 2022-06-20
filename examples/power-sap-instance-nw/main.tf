@@ -4,7 +4,7 @@
 #####################################################
 
 provider "ibm" {
-  region    =   var.pvs_region
+  region    =   lookup(var.ibm_pvs_zone_region_map,var.pvs_zone, null)
   zone      =   var.pvs_zone
   ibmcloud_api_key = var.ibmcloud_api_key != null ? var.ibmcloud_api_key : null
 }
