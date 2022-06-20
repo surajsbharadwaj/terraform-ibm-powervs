@@ -42,7 +42,7 @@ resource "ibm_pi_cloud_connection_network_attach" "pvs_subnet_attach" {
 
 module "hana" {
   // source = "terraform-ibm-modules/powervs/ibm/modules/power-sap-instance"
-  source = "../../modules/power-sap-instance"
+  source = "./modules/power-sap-instance"
   
   pvs_zone                       = var.pvs_zone
   pvs_resource_group_name        = var.pvs_resource_group_name
@@ -68,7 +68,7 @@ module "hana" {
 
 module "netweaver" {
   // source = "terraform-ibm-modules/powervs/ibm/modules/power-sap-instance"
-  source = "../../modules/power-sap-instance"
+  source = "./modules/power-sap-instance"
   
   count                          = var.pvs_nw_instance_count
   
