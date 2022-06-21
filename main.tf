@@ -11,7 +11,7 @@ provider "ibm" {
 
 module "hana" {
   // source = "terraform-ibm-modules/powervs/ibm/modules/power-sap-instance"
-  source = "../../modules/power-sap-instance"
+  source = "./modules/power-sap-instance"
   
   pvs_zone                       = var.pvs_zone
   pvs_resource_group_name        = var.pvs_resource_group_name
