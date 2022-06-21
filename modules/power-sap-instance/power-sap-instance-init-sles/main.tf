@@ -146,8 +146,8 @@ EOF
 
     ####  Execute ansible roles: prepare_sles_sap, fs_creation and swap_creation  ####
 
-    "ansible-galaxy collection install sahityajain123.ansible_powervs_linux_sap",
-    "unbuffer ansible-playbook --connection=local -i 'localhost,' ~/.ansible/collections/ansible_collections/sahityajain123/ansible_powervs_linux_sap/playbooks/files/playbook-sles.yml --extra-vars '@/root/terraform_vars.yml' 2>&1 | tee ansible_execution.log ",
+    "ansible-galaxy collection install ibm.power_linux_sap",
+    "unbuffer ansible-playbook --connection=local -i 'localhost,' ~/.ansible/collections/ansible_collections/ibm/power_linux_sap/playbooks/playbook-sles.yml --extra-vars '@/root/terraform_vars.yml' 2>&1 | tee ansible_execution.log ",
     ]
   }
 
