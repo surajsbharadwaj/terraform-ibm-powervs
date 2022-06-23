@@ -3,7 +3,7 @@
 It creates empty SAP SYSTEM landscape: 
 - 1 SAP network and attaches it to Cloud connection
 - 1 HANA instance on e980 PowerVS with specified volumes
-- N number of Netweaver instances on s922 PowerVS 
+- N number of NetWeaver instances on s922 PowerVS 
 
 Note: prerequisite The bastion host must be running SQUID proxy server with 3128 port open. If squid server is not on bastion host, then pass the squid server public and private ips to variables `input_bastion_public_ip` and `input_bastion_private_ip`
 
@@ -43,8 +43,7 @@ This example illustrates how to use the `power-sap-instance` module.
 
 | Name                              | Description                                           | Type   | Default | Required |
 |-----------------------------------|-------------------------------------------------------|--------|---------|----------|
-| <a name="input_pvs_region"></a> [pvs\_region](#input\_pvs\_region) | IBM Cloud Region | `string` | n/a | yes |
-| <a name="input_pvs_zone"></a> [pvs\_zone](#input\_pvs\_zone) | IBM Cloud Zone | `string` | n/a | yes |
+| <a name="input_pvs_zone"></a> [pvs\_zone](#input\_pvs\_zone) | IBM Cloud PVS Zone. Valid values: sao01,osa21,tor01,us-south,dal12,us-east,tok04,lon04,lon06,eu-de-1, eu-de-2,syd04,syd05 | `string` | n/a | yes |
 | <a name="input_pvs_resource_group_name"></a> [pvs\_resource\_group\_name](#input\_pvs\_resource\_group\_name) | Existing PowerVS service resource group Name | `string` | n/a | yes |
 | <a name="input_pvs_service_name"></a> [pvs\_service\_name](#input\_pvs\_service\_name) | Existing Name of the PowerVS service | `string` | n/a | yes |
 | <a name="input_pvs_sshkey_name"></a> [pvs\_sshkey\_name](#input\_pvs\_sshkey\_name) | Existing SSH key name | `string` | n/a | yes |
@@ -61,8 +60,8 @@ This example illustrates how to use the `power-sap-instance` module.
 | <a name="input_pvs_nw_instance_processors"></a> [pvs\_nw\_instance\_processors](#input\_pvs\_nw\_instance\_processors) | Number of processors | `string` | `"4"` | yes |
 | <a name="input_pvs_nw_instance_memory"></a> [pvs\_nw\_instance\_memory](#input\_pvs\_nw\_instance\_memory) | Amount of memory | `string` | `"400"` | yes |
 | <a name="input_pvs_nw_instance_storage_config"></a> [pvs\_nw\_instance\_storage\_config](#input\_pvs\_nw\_instance\_storage\_config) | DISKS To be created and attached to nw nodes.Comma separated values | `map` | <pre>{<br>  "counts": "1,1",<br>  "disks_size": "50,60",<br>  "names": "usrsap,usrtrans",<br>  "paths": "/usr/sap,/usr/sap/trans",<br>  "tiers": "tier3,tier3"<br>}</pre> | optional |
-| <a name="input_bastion_public_ip"></a> [bastion\_public\_ip](#input\_bastion\_public\_ip) | Public IP of Bastion/jumpserver Host | `string` | n/a | yes |
-| <a name="input_bastion_private_ip"></a> [bastion\_private\_ip](#input\_bastion\_private\_ip) | Private IP of Bastion/jumpserver Host | `string` | n/a | yes |
+| <a name="input_bastion_public_ip"></a> [bastion\_public\_ip](#input\_bastion\_public\_ip) | Existing Public IP of Bastion/jumpserver Host. Squid must be running on this host | `string` | n/a | yes |
+| <a name="input_bastion_private_ip"></a> [bastion\_private\_ip](#input\_bastion\_private\_ip) | Existing Private IP of Bastion/jumpserver Host. Squid must be running on this host | `string` | n/a | yes |
 | <a name="input_ssh_private_key"></a> [ssh\_private\_key](#input\_ssh\_private\_key) | Private Key to configure Instance, Will not be uploaded to server | `string` | n/a | yes |
 | <a name="input_os_activation"></a> [os\_activation](#input\_os\_activation) | SUSE/RHEL activation username and password to register OS | `map` | <pre>{<br>  "activation_password": "",<br>  "activation_username": "",<br>  "required": false<br>}</pre> | optional |
 | <a name="input_sap_domain"></a> [sap\_domain](#input\_sap\_domain) | Domain name to be set. Required when deploying RHEL system. | `string` | n/a | optional |

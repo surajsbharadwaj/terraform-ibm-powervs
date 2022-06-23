@@ -8,7 +8,6 @@
 Example Usage :
 
 ibmcloud_api_key                  = "_3R"
-pvs_region                        = "sao"
 pvs_zone                          = "sao01"
 pvs_resource_group_name           = "Default"
 pvs_service_name                  = "TestService"
@@ -16,19 +15,19 @@ pvs_sshkey_name                   = "publish"
 pvs_instance_image_name           = "Linux-SUSE-SAP-15-3"
 pvs_instance_private_net_names    = [ "mgmt_net","bkp_net"]
 pvs_instance_sap_network          = { 
-                                     "name"     = "sap_net"
-								     "cidr"     = "10.111.1.1/24"
+                                     "name" = "sap_net"
+								     "cidr" = "10.111.1.1/24"
 								    }
 cloud_connection_name             = "test2-auto"
 
 pvs_hana_instance_hostname        = "hana"
 pvs_hana_instance_profile_id      = "ush1-4x128"
 pvs_hana_instance_storage_config  = { 
-                                     names  = "data,log,shared,usrsap"
+                                     names      = "data,log,shared,usrsap"
                                      disks_size = "160,150,300,50"
-                                     counts = "8,8,1,1"
-								     tiers  = "tier1,tier1,tier3,tier3"
-                                     paths  = "/hana/data,/hana/log,/hana/shared,/usr/sap"
+                                     counts     = "8,8,1,1"
+								     tiers      = "tier1,tier1,tier3,tier3"
+                                     paths      = "/hana/data,/hana/log,/hana/shared,/usr/sap"
                                     }
 									
 pvs_nw_instance_hostname          = "test"

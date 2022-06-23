@@ -1,10 +1,5 @@
-variable "pvs_region" {
-  description = "IBM Cloud Region"
-  type        = string
-}
-
 variable "pvs_zone" {
-  description = "IBM Cloud Zone"
+  description = "IBM Cloud PVS Zone. Valid values: sao01,osa21,tor01,us-south,dal12,us-east,tok04,lon04,lon06,eu-de-1, eu-de-2,syd04,syd05"
   type        = string 
 }
 
@@ -119,12 +114,12 @@ variable "pvs_nw_instance_storage_config" {
 #####################################################
 
 variable "bastion_public_ip" {
-  description = "Public IP of Bastion/jumpserver Host"
+  description = "Existing Public IP of Bastion/jumpserver Host. Squid must be running on this host"
   type        = string
 }
 
 variable "bastion_private_ip" {
-  description = "Private IP of Bastion/jumpserver Host"
+  description = "Existing Private IP of Bastion/jumpserver Host. Squid must be running on this host"
   type        = string
 }
 
@@ -156,4 +151,24 @@ variable "ibmcloud_api_key" {
   description = "IBM Cloud Api Key"
   type        = string
   default     = null
+}
+
+variable "ibm_pvs_zone_region_map" {
+  description = "Map of IBM Power VS zone to the region of PowerVS Infrastructure"
+  type        = map
+  default     = {    
+                  syd04    = "syd"
+                  syd05    = "syd" 
+                  eu-de-1  = "eu-de"
+                  eu-de-2  = "eu-de"
+                  lon04    = "eu-gb"
+                  lon06    = "eu-gb"
+                  tok04    = "jp-tok" 
+                  us-east  = "us-east"
+                  us-south = "us-south"
+                  dal12    = "us-south"
+                  tor01    = "tor"
+                  osa21    = "osa"
+                  sao01    = "sao"
+        }
 }

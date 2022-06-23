@@ -77,12 +77,12 @@ variable "pvs_instance_storage_config" {
 #####################################################
 
 variable "bastion_public_ip" {
-  description = "Public IP of Bastion/jumpserver Host"
+  description = "Existing Public IP of Bastion/jumpserver Host. Squid must be running on this host"
   type        = string
 }
 
 variable "bastion_private_ip" {
-  description = "Private IP of Bastion/jumpserver Host"
+  description = "Existing Private IP of Bastion/jumpserver Host. Squid must be running on this host"
   type        = string
 }
 
