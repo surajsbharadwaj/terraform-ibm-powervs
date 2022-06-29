@@ -1,5 +1,5 @@
 variable "bastion_public_ip" {
-  description = "Public IP of Bastion Host"
+  description = "Existing Public IP of Bastion/jumpserver Host. Squid must be running on this host Public IP of Bastion Host"
   type        = string
 }
 
