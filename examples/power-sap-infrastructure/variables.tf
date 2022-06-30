@@ -116,7 +116,7 @@ variable "ibm_pvs_zone_region_map" {
                   eu-de-2  = "eu-de"
                   lon04    = "eu-gb"
                   lon06    = "eu-gb"
-                  tok04    = "jp-tok" 
+                  tok04    = "tok" 
                   us-east  = "us-east"
                   us-south = "us-south"
                   dal12    = "us-south"
