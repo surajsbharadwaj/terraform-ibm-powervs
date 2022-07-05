@@ -1,5 +1,5 @@
 variable "pvs_zone" {
-  description = "IBM Cloud Zone"
+  description = "IBM PowerVS Cloud Zone"
   type        = string
 }
 

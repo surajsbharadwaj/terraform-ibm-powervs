@@ -43,7 +43,7 @@ module "cloud-connection" {
   pvs_subnet_names            = [var.pvs_management_network.name,var.pvs_backup_network.name]
   ibmcloud_api_key            = var.ibmcloud_api_key
   vpc_region                  = var.vpc_region
-  vpc_crns                    = length(var.vpc_names) >= 1 ? data.ibm_is_vpc.vpc_crn_ds.*.crn : null
+  vpc_crns                    = length(var.vpc_names) >= 1 ? data.ibm_is_vpc.vpc_crn_ds.*.crn : var.vpc_names
   cloud_connection_gr         = var.cloud_connection_gr
   cloud_connection_metered    = var.cloud_connection_metered
   

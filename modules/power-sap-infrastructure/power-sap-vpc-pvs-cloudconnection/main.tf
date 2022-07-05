@@ -63,7 +63,7 @@ resource "ibm_pi_cloud_connection" "cloud_connection" {
   pi_cloud_connection_metered         = var.cloud_connection_metered
   pi_cloud_connection_networks        = toset(data.ibm_pi_network.pvs_subnets_ds.*.id)
   pi_cloud_connection_vpc_enabled     = length(var.vpc_crns) >= 1 ? true : null 
-  pi_cloud_connection_vpc_crns        = toset(var.vpc_crns)
+  pi_cloud_connection_vpc_crns        = length(var.vpc_crns) >= 1 ? toset(var.vpc_crns) : null
 }
 
 #####################################################
@@ -81,7 +81,7 @@ resource "ibm_pi_cloud_connection" "cloud_connection_backup" {
   pi_cloud_connection_metered         = var.cloud_connection_metered
   pi_cloud_connection_networks        = toset(data.ibm_pi_network.pvs_subnets_ds.*.id)
   pi_cloud_connection_vpc_enabled     = length(var.vpc_crns) >= 1 ? true : null 
-  pi_cloud_connection_vpc_crns        = toset(var.vpc_crns)
+  pi_cloud_connection_vpc_crns        = length(var.vpc_crns) >= 1 ? toset(var.vpc_crns) : null
 } 
 
 #####################################################

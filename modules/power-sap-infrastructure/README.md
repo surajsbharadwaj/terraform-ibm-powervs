@@ -3,10 +3,10 @@
 It creates:
 - PVS service
 - ssh key
-- 2 private networks for management network and backup network
-- imports stock sap catalogue images.
-- Creates one or 2 cloud connections and attaches VPC and PowerVS subnets
-- Option to resuse Cloud connection to attach new PowerVS subnets
+- 2 private networks: management network and backup network
+- Imports stock sap catalogue images.
+- Creates 1 or 2 cloud connections , attaches VPCs and PowerVS subnets
+- Option to reuse Cloud connection to attach new PowerVS subnets
 
 ## Example Usage
 ```
@@ -54,7 +54,7 @@ module "power-sap-infrastructure" {
 
 | Name                              | Description                                           | Type   | Default | Required |
 |-----------------------------------|-------------------------------------------------------|--------|---------|----------|
-| <a name="input_pvs_zone"></a> [pvs\_zone](#input\_pvs\_zone) | IBM Cloud Zone | `string` | n/a | yes |
+| <a name="input_pvs_zone"></a> [pvs\_zone](#input\_pvs\_zone) | IBM PowerVS Cloud Zone | `string` | n/a | yes |
 | <a name="input_pvs_resource_group_name"></a> [pvs\_resource\_group\_name](#input\_pvs\_resource\_group\_name) | Existing Resource Group Name | `string` | n/a | yes |
 | <a name="input_pvs_service_name"></a> [pvs\_service\_name](#input\_pvs\_service\_name) | Name of PowerVS service which will be created | `string` | n/a | yes |
 | <a name="input_pvs_sshkey_name"></a> [pvs\_sshkey\_name](#input\_pvs\_sshkey\_name) | Name of PowerVS SSH Key which will be created | `string` | n/a | yes |

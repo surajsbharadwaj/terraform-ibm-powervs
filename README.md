@@ -8,7 +8,7 @@ This is a collection of modules that make it easier to provision PowerVS Resourc
 
 ## Compatibility
 
-This module is meant for use with Terraform 0.13.
+This module is meant for use with Terraform 1.1.
 
 ## Usage
 
@@ -18,12 +18,12 @@ Full examples are in the examples folder.
 
 ### Terraform plugins
 
-- [Terraform](https://www.terraform.io/downloads.html) 0.13
+- [Terraform](https://www.terraform.io/downloads.html) 1.1
 ## Install
 
 ### Terraform
 
-Be sure you have the correct Terraform version (0.13), you can choose the binary here:
+Be sure you have the correct Terraform version (1.1), you can choose the binary here:
 - https://releases.hashicorp.com/terraform/
 
 ## How to input varaible values through a file

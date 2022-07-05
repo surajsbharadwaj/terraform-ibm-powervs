@@ -16,11 +16,13 @@ variable "prefix" {
 variable "pvs_service_name" {
   description = "Name of PowerVS service which will be created"
   type        = string
+  default     = "power-service"
 }
 
 variable "pvs_sshkey_name" {
   description = "Name of PowerVS SSH Key which will be created"
   type        = string
+  default     = "ssh-key-pvs"
 }
 
 variable "pvs_public_key" {
@@ -37,16 +39,25 @@ variable "pvs_image_names" {
 variable "pvs_management_network" {
   description = "PowerVS Management Subnet name and cidr which will be created."
   type        = map
+  default    = {
+                 "name" = "mgmt_net"
+                 "cidr" = "10.51.0.0/24"
+               }
 }
 
 variable "pvs_backup_network" {
   description = "PowerVS Backup Network name and cidr which will be created."
   type        = map
+  default    = {
+                 "name" = "bkp_net"
+                 "cidr" = "10.52.0.0/24"
+               }
 }
 
 variable "cloud_connection_reuse" {
   description = "Use existing Cloud connection to attach PVS subnets"
   type        = bool
+  default     = false
 }
 
 variable "cloud_connection_name" {
@@ -57,13 +68,13 @@ variable "cloud_connection_name" {
 variable "cloud_connection_count" {
   description = "Required number of Cloud connections. Ignore when Reusing. Maximum is 2 per location"
   type        = string
-  default     = 2
+  default     = "2"
 }
 
 variable "cloud_connection_speed" {
   description = "Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000. Required when creating new connection"
   type        = string
-  default     = null
+  default     = "5000"
 }
 
 #####################################################
@@ -91,13 +102,13 @@ variable "vpc_names" {
 variable "cloud_connection_gr" {
   description = "Enable global routing for this cloud connection.Can be specified when creating new connection"
   type        = bool
-  default     = null
+  default     = true
 }
 
 variable "cloud_connection_metered" {
   description = "Enable metered for this cloud connection. Can be specified when creating new connection"
   type        = bool
-  default     = null
+  default     = false
 }
 
 variable "ibmcloud_api_key" {
@@ -110,18 +121,18 @@ variable "ibm_pvs_zone_region_map" {
   description = "Map of IBM Power VS zone to the region of PowerVS Infrastructure"
   type        = map
   default     = {    
-                  syd04    = "syd"
-                  syd05    = "syd" 
-                  eu-de-1  = "eu-de"
-                  eu-de-2  = "eu-de"
-                  lon04    = "eu-gb"
-                  lon06    = "eu-gb"
-                  tok04    = "tok" 
-                  us-east  = "us-east"
-                  us-south = "us-south"
-                  dal12    = "us-south"
-                  tor01    = "tor"
-                  osa21    = "osa"
-                  sao01    = "sao"
+                  "syd04"    = "syd"
+                  "syd05"    = "syd" 
+                  "eu-de-1"  = "eu-de"
+                  "eu-de-2"  = "eu-de"
+                  "lon04"    = "lon"
+                  "lon06"    = "lon"
+                  "tok04"    = "tok" 
+                  "us-east"  = "us-east"
+                  "us-south" = "us-south"
+                  "dal12"    = "us-south"
+                  "tor01"    = "tor"
+                  "osa21"    = "osa"
+                  "sao01"    = "sao"
         }
 }
