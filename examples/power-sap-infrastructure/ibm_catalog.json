@@ -1,0 +1,99 @@
+{
+    "name": "terraform-ibm-powervs-catalog-powervs-sap-infrastructure",
+    "flavors": [
+        {
+            "label": "",
+            "name": "",
+            "compliance": {
+                "controls": [
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "AC-2(1)"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "AC-2(a)"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "AC-2(c)"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "AC-2(i)"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "AC-2(j)"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "AC-3"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "AC-4"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "AC-6-0"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "AU-2(a)"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "CA-7(a)"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "CM-2"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "CM-8(4)"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "IA-4"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "SC-8-0"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "RA-5(a)"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "SC-12"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "SC-13"
+                    },
+                    {
+                        "profile_name": "SAP on IBM Power compliance v0.1.2",
+                        "control_id": "SC-36"
+                    }
+                ]
+            },
+            "iam_permissions": [],
+            "architecture": {
+                "features": [],
+                "diagrams": [
+                    {
+                        "diagram": {
+                            "caption": "Infrastructure for SAP on Power Virtual Servers",
+                            "url": "https://globalcatalog.cloud.ibm.com/api/v1/goldeneye-artifacts/artifacts/PowerVS-Infrastructure-SAP-v0.2.drawio.svg",
+                            "metadata": []
+                        },
+                        "description": "The Power VS Infrastructure module creates the underlying network connections from a Secure Landing zone set of Virtual Private Clouds to a set Power Virtual servers."
+                    }
+                ]
+            }
+        }
+    ]
+}
