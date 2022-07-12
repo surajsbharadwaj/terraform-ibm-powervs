@@ -25,7 +25,7 @@ variable "pvs_sshkey_name" {
 }
 
 variable "pvs_instance_image_name" {
-  description = "Image Name for node"
+  description = "Image Name for node. Currently valid values: Linux-RHEL-SAP-8-1, Linux-RHEL-SAP-8-2, Linux-RHEL-SAP-8-4, Linux-SUSE-SAP-12-4, Linux-SUSE-SAP-15-2, Linux-SUSE-SAP-15-3"
   type        = string
   default     = "Linux-SUSE-SAP-15-3"
 }
@@ -106,9 +106,9 @@ variable "ibm_pvs_zone_region_map" {
                   syd05    = "syd" 
                   eu-de-1  = "eu-de"
                   eu-de-2  = "eu-de"
-                  lon04    = "eu-gb"
-                  lon06    = "eu-gb"
-                  tok04    = "jp-tok" 
+                  lon04    = "lon"
+                  lon06    = "lon"
+                  tok04    = "tok" 
                   us-east  = "us-east"
                   us-south = "us-south"
                   dal12    = "us-south"
