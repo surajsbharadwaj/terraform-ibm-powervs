@@ -31,7 +31,7 @@ variable "pvs_public_key" {
 }
 
 variable "pvs_image_names" {
-  description = "List of Images to be imported into cloud account from catalog images"
+  description = "List of Images to be imported into cloud account from catalog images. Currently valid values: Linux-RHEL-SAP-8-1, Linux-RHEL-SAP-8-2, Linux-RHEL-SAP-8-4, Linux-SUSE-SAP-12-4, Linux-SUSE-SAP-15-2, Linux-SUSE-SAP-15-3"
   type        = list(string)
   default     = ["Linux-SUSE-SAP-15-3","Linux-RHEL-SAP-8-4"]
 }
