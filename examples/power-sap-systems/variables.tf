@@ -34,8 +34,8 @@ variable "pvs_instance_sap_network" {
   type        = map
   default     = {
                   "name"     = "sap_net"
-				  "cidr"     = "10.111.1.1/24"
-				}
+		  "cidr"     = "10.111.1.1/24"
+                }
 }
 
 variable "cloud_connection_name" {
@@ -157,18 +157,18 @@ variable "ibm_pvs_zone_region_map" {
   description = "Map of IBM Power VS zone to the region of PowerVS Infrastructure"
   type        = map
   default     = {    
-                  syd04    = "syd"
-                  syd05    = "syd" 
-                  eu-de-1  = "eu-de"
-                  eu-de-2  = "eu-de"
-                  lon04    = "lon"
-                  lon06    = "lon"
-                  tok04    = "tok" 
-                  us-east  = "us-east"
-                  us-south = "us-south"
-                  dal12    = "us-south"
-                  tor01    = "tor"
-                  osa21    = "osa"
-                  sao01    = "sao"
-        }
+                  "syd04"    = "syd"
+                  "syd05"    = "syd" 
+                  "eu-de-1"  = "eu-de"
+                  "eu-de-2"  = "eu-de"
+                  "lon04"    = "lon"
+                  "lon06"    = "lon"
+                  "tok04"    = "tok" 
+                  "us-east"  = "us-east"
+                  "us-south" = "us-south"
+                  "dal12"    = "us-south"
+                  "tor01"    = "tor"
+                  "osa21"    = "osa"
+                  "sao01"    = "sao"
+               }
 }
