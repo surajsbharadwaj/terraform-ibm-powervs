@@ -85,7 +85,8 @@ jobs:
 
           # import the version into the catalog and run schematics validation 
           RESOURCE_GROUP="Default"
-
+          chmod +x ./.github/scripts/onboard_validate_publish.sh
+          chmod 777 ./.github/scripts/onboard_validate_publish.sh
           ./.github/scripts/onboard_validate_publish.sh "$catalogName" "$offeringName" ${{ steps.powervs-infrastructure-asset.outputs.browser_download_url }} ${{ env.VERSION }} "$RESOURCE_GROUP"
 
           echo "--------------------------------------------------------------------"
