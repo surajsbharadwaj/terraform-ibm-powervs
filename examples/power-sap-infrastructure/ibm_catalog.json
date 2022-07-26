@@ -81,9 +81,21 @@
                     }
                 ]
             },
-            "iam_permissions": [],
+            "iam_permissions": [
+                {
+                    "role_crns": [
+                        "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+                    ],
+                    "service_name": "power-iaas"
+                }
+            ],
             "architecture": {
-                "features": [],
+                "features": [
+                    {
+                        "description": "1",
+                        "title": "PowerVS Service"
+                    }
+                ],
                 "diagrams": [
                     {
                         "diagram": {

@@ -81,9 +81,21 @@
                     }
                 ]
             },
-            "iam_permissions": [],
+            "iam_permissions": [
+                {
+                    "role_crns": [
+                        "crn:v1:bluemix:public:iam::::serviceRole:Manager"
+                    ],
+                    "service_name": "power-iaas"
+                }
+            ],
             "architecture": {
-                "features": [],
+                "features": [
+                    {
+                        "description": "3",
+                        "title": "Power LPARs"
+                    }
+                ],
                 "diagrams": [
                     {
                         "diagram": {
@@ -91,7 +103,7 @@
                             "url": "https://globalcatalog.cloud.ibm.com/api/v1/goldeneye-artifacts/artifacts/slz-power-SLZ_SAP_FULL_non_HA.drawio.svg",
                             "metadata": []
                         },
-                        "description": "The *PowerVS SAP Systems* offering builds on the foundation of the Secure Landing Zone and PowerVS Infrastructure by completing the deployment of a basic but expandable SAP system landscape.  SAP is deployed on Power Virtual Server instances with initial instances of Hana and Netweaver. \n  \nThe network configuration done by the Power Insfrastructure provides connectivity to NFS servers where storage volumes are created for Hana and Netweaver.  Other services such as DNS and LDAP running the Workload VPC are also leveraged.\n\nThe network bridge between the IBM Power zone and the IBM Virtual Private Cloud is the Direct Link Connect.\n\nAdditional instances of Hana and Netweaver may be configured.\n\nThe resulting SAP landscape leverages the services such as Activity Tracker, Cloud Object Storage, Key Management from the Secure Landing Zone offering and the network connectivity configuration provided by the PowerVS Infrastructure offering."
+                        "description": "PowerVS SAP Systems builds on the management VPC, workload VPC, and Direct Link Connections that were created by Secure Landing Zone VPC with VSIs and PowerVS Infrastructure. PowerVS SAP Systems adds the initial instances of HANA and NetWeaver that provide the analytic and storage capabilities for the SAP environment. The network configuration that is created by PowerVS Infrastructure connects to Network File System (NFS) servers where storage volumes are created for HANA and NetWeaver. Additional instances of HANA and NetWeaver can be configured.\n\n\nAfter the addition of HANA and NetWeaver, the deployment of a basic but expandable SAP system landscape is complete.\n\n\nThe complete SAP landscape uses services such as Activity Tracker, Cloud Object Storage, Key Management from Secure Landing Zone VPC with VSIs, and the network connectivity configuration provided by the PowerVS Infrastructure offering."
                     }
                 ]
             }
