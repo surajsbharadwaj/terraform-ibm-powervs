@@ -11,29 +11,21 @@ It does the following jobs:
 ## Example Usage
 ```
 provider "ibm" {
-  region    =   lookup(var.ibm_pvs_zone_region_map,var.pvs_zone, null)
+  region    =   var.pvs_region
   zone      =   var.pvs_zone
   ibmcloud_api_key = var.ibmcloud_api_key != null ? var.ibmcloud_api_key : null
 }
 
-data "ibm_schematics_workspace" "schematics_workspace" {
-    count        = var.workspace_id != null && var.workspace_id != "" ? 1 : 0 
-    workspace_id = var.workspace_id
-}
-
-locals {
-  workspace_values = var.workspace_id != null && var.workspace_id != "" ? data.ibm_schematics_workspace.schematics_workspace.0.template_inputs : null
-}
 
 module "power-infrastructure" {
   source = "terraform-ibm-modules/powervs/ibm/modules/powervs-infrastructure"
 
   pvs_zone                    = var.pvs_zone
   pvs_resource_group_name     = var.pvs_resource_group_name
-  pvs_service_name            = var.workspace_id != null && var.workspace_id != "" ? "${local.workspace_values[index(local.workspace_values.*.name,"prefix")].value}-${var.pvs_service_name}" : "${var.prefix}-${var.pvs_service_name}"
+  pvs_service_name            = var.pvs_service_name
   tags                        = var.tags
-  pvs_sshkey_name             = var.workspace_id != null && var.workspace_id != "" ? "${local.workspace_values[index(local.workspace_values.*.name,"prefix")].value}-${var.pvs_sshkey_name}" : "${var.prefix}-${var.pvs_sshkey_name}"
-  ssh_public_key              = var.workspace_id != null && var.workspace_id != "" ? local.workspace_values[index(local.workspace_values.*.name,"ssh_public_key")].value : var.ssh_public_key
+  pvs_sshkey_name             = var.pvs_sshkey_name
+  ssh_public_key              = var.ssh_public_key
   pvs_management_network      = var.pvs_management_network
   pvs_backup_network          = var.pvs_backup_network
   transit_gw_name             = var.transit_gw_name
