@@ -6,54 +6,53 @@
 /****************************************************
 Example 1 usage with new cloud connection:
 
-ibmcloud_api_key        = "_3asd"
-pvs_zone                = "sao01"
-pvs_resource_group_name = "Default"
-prefix                  = "test"
-pvs_service_name        = "TestService"
-pvs_sshkey_name         = "publish"
-pvs_public_key          = "ssh-rsa AAAAB3Nz......"
-pvs_image_names         = ["Linux-SUSE-SAP-12-4","Linux-RHEL-SAP-8-1"]
+worksapce_id            = "us-east.workspace.Demo.cee9aead"  # optional
+ibmcloud_api_key        = "3_asd"
+prefix                  = "work"
+pvs_zone                = "syd04"
+pvs_resource_group_name = "Automation" # existing resource group name
+ssh_public_key          = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABg"
+
 pvs_management_network  = {
   name = "mgmt_net"
-  cidr = "10.51.0.0/24"
+  cidr = "10.61.0.0/24"
 }
 pvs_backup_network      = {
   name = "bkp_net"
-  cidr = "10.52.0.0/24"
+  cidr = "10.62.0.0/24"
 }
-pvs_tags     = ["T1","T2"]
-cloud_connection_reuse      = false
-cloud_connection_count      = "1" ### 1 or 2 depending on availability in DC. Per DC max count is 2
-cloud_connection_name       = "test2-auto"
+tags                        = ["T1","T2"]
+
+cloud_connection_count      = "2" ### 1 or 2 depending on availability in DC. Per DC max count is 2
 cloud_connection_speed      = "5000"  ### mandatory
-vpc_region                  = "br-sao" # mandatory
-vpc_names                   = ["test-automation-sao2"] # mandatory
+transit_gw_name             = "syd-tg" ## required when creating new cloud connection
 cloud_connection_gr         = true # optional
 cloud_connection_metered    = false # optional
+
 
 ******************************************************/
 
 /****************************************************
 Example 2 usage reusing cloud connection:
 
-ibmcloud_api_key        = "_3asd"
-pvs_zone                = "sao01"
-pvs_resource_group_name = "Default"
-prefix                  = "test"
-pvs_service_name        = "TestService"
-pvs_sshkey_name         = "publish"
-pvs_public_key          = "ssh-rsa AAAAB3Nz......"
-pvs_image_names         = ["Linux-SUSE-SAP-12-4","Linux-RHEL-SAP-8-1"]
+worksapce_id            = ""  # optional
+ibmcloud_api_key        = "3_asd"
+prefix                  = "work"
+pvs_zone                = "syd04"
+pvs_resource_group_name = "Automation" # existing resource group name
+ssh_public_key          = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQGG8L"
+
 pvs_management_network  = {
   name = "mgmt_net"
-  cidr = "10.51.0.0/24"
+  cidr = "10.61.0.0/24"
 }
 pvs_backup_network      = {
   name = "bkp_net"
-  cidr = "10.52.0.0/24"
+  cidr = "10.62.0.0/24"
 }
-pvs_tags     = ["T1","T2"]
-cloud_connection_reuse      = true
-cloud_connection_name       = "test2-auto"
+tags                        = ["T1","T2"]
+
+cloud_connection_count      = "2" ### 1 or 2 depending on availability in DC. Per DC max count is 2
+transit_gw_name             = "" ## blank when reusing cloud connection
+
 ******************************************************/

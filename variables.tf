@@ -1,3 +1,9 @@
+variable "workspace_id" {
+  description = "IBM cloud schematics workspace ID to reuse values from other workspaces"
+  type        = string
+  default     = ""
+}
+
 variable "pvs_zone" {
   description = "IBM Cloud PVS Zone. Valid values: sao01,osa21,tor01,us-south,dal12,us-east,tok04,lon04,lon06,eu-de-1,eu-de-2,syd04,syd05"
   type        = string
@@ -25,15 +31,9 @@ variable "pvs_sshkey_name" {
   default     = "ssh-key-pvs"
 }
 
-variable "pvs_public_key" {
-  description = "PowerVS SSH Public key data"
+variable "ssh_public_key" {
+  description = "Public SSH Key for PowerVM creation"
   type        = string
-}
-
-variable "pvs_image_names" {
-  description = "List of Images to be imported into cloud account from catalog images. Currently valid values: Linux-RHEL-SAP-8-1, Linux-RHEL-SAP-8-2, Linux-RHEL-SAP-8-4, Linux-SUSE-SAP-12-4, Linux-SUSE-SAP-15-2, Linux-SUSE-SAP-15-3"
-  type        = list(string)
-  default     = ["Linux-SUSE-SAP-15-3","Linux-RHEL-SAP-8-4"]
 }
 
 variable "pvs_management_network" {
@@ -54,21 +54,16 @@ variable "pvs_backup_network" {
                }
 }
 
-variable "cloud_connection_reuse" {
-  description = "Use existing Cloud connection to attach PVS subnets"
-  type        = bool
-  default     = false
-}
-
-variable "cloud_connection_name" {
-  description = "Name of the Cloud connection which will be created/ Existing name of cloud connection to attach subnets"
+variable "transit_gw_name" {  
+  description = "Name of the existing transit gateway. If empty / null, cloud connections will be reused."
   type        = string
+  default     = null
 }
 
 variable "cloud_connection_count" {
-  description = "Required number of Cloud connections. Ignore when Reusing. Maximum is 2 per location"
+  description = "Required number of Cloud connections which will be created. Ignore when Transit gateway is empty. Maximum is 2 per location"
   type        = string
-  default     = "2"
+  default     = 2
 }
 
 variable "cloud_connection_speed" {
@@ -81,22 +76,10 @@ variable "cloud_connection_speed" {
 # Optional Parameters
 #####################################################
 
-variable "pvs_tags" {
+variable "tags" {
   description = "List of Tag names for PowerVS service"
   type        = list(string)
   default     = null
-}
-
-variable "vpc_region" {
-  description = "IBM Cloud VPC Region. Required when creating new connection"
-  type        = string
-  default     = null
-}
-
-variable "vpc_names" {
-  description = "Existing VPC Names which has to be attached to Cloud connection. Required when creating new connection "
-  type        = list
-  default     = []
 }
 
 variable "cloud_connection_gr" {

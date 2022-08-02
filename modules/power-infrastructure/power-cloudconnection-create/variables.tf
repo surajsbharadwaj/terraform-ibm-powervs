@@ -13,18 +13,14 @@ variable "pvs_service_name" {
   type        = string
 }
 
-variable "cloud_connection_reuse" {
-  description = "Use existing Cloud connection to attach PVS subnets"
-  type        = bool
-}
-
-variable "cloud_connection_name" {
-  description = "Name of the Cloud connection which will be created/ Existing name of cloud connection to attach subnets"
+variable "transit_gw_name" {  
+  description = "Name of the existing transit gateway. If empty / null, cloud connections will be reused."
   type        = string
+  default     = null
 }
 
 variable "cloud_connection_count" {
-  description = "Required number of Cloud connections. Ignore when Reusing. Maximum is 2 per location"
+  description = "Required number of Cloud connections which will be created. Ignore when Transit gateway is empty. Maximum is 2 per location"
   type        = string
   default     = 2
 }
@@ -33,23 +29,6 @@ variable "cloud_connection_speed" {
   description = "Speed in megabits per sec. Supported values are 50, 100, 200, 500, 1000, 2000, 5000, 10000. Required when creating new connection"
   type        = string
   default     = null
-}
-
-variable "pvs_subnet_names" {
-  description = "List of PowerVs subnet names to be attached to Cloud connection"
-  type        = list
-}
-
-variable "vpc_region" {
-  description = "IBM Cloud VPC Region. Required if cloud_connection_vpc_enable is true"
-  type        = string
-  default     = null
-}
-
-variable "vpc_crns" {
-  description = "Existing VPC Crns which has to be attached to Cloud connection"
-  type        = list
-  default     = []
 }
 
 variable "cloud_connection_gr" {

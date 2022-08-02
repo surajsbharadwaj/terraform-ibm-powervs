@@ -18,15 +18,9 @@ variable "pvs_sshkey_name" {
   type        = string
 }
 
-variable "pvs_public_key" {
-  description = "PowerVS SSH Public key data"
+variable "ssh_public_key" {
+  description = "Public SSH Key for PowerVM creation"
   type        = string
-}
-
-variable "pvs_image_names" {
-  description = "List of Images to be imported into cloud account from catalog images"
-  type        = list(string)
-  default     = ["Linux-SUSE-SAP-15-3","Linux-RHEL-SAP-8-4"]
 }
 
 variable "pvs_management_network" {
@@ -43,7 +37,7 @@ variable "pvs_backup_network" {
 # Optional Parameters
 #####################################################
 
-variable "pvs_tags" {
+variable "tags" {
   description = "List of Tag names for PowerVS service"
   type        = list(string)
   default     = null
